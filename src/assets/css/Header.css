@@ -1,0 +1,271 @@
+.header_wrapper{
+  position: relative;
+  background: #fff;
+  z-index: 4;
+}
+.section_inner{
+  padding-top: 90px;
+  max-width: 1200px;
+  position: relative;
+  margin: 0 auto;
+}
+/* 在该头部div内的内容都将绝对定位  (相对于section_inner)*/
+.music_title{
+  position: absolute;
+  left: 0;
+  top: 22px;
+}
+.music_logo{
+  width: 170px;
+  height: 46px;
+}
+
+/* 第一个导航栏*/
+.Ab_Nav{
+  position: absolute;
+  left: 198px;
+  top: 0;
+}
+.ab_nav_item{
+  position: relative;
+  float: left;
+  margin-right: -5px;
+}
+.ab_nav_item_link.ab_link_current,.search_hot_link:hover,.search_hot_link:hover span{
+  background-color: #31c27c;
+  color: #fff;
+}
+.ab_nav_item_link{
+  display: block;
+  padding: 0 20px;
+  height: 90px;
+  line-height: 90px;
+  text-align: center;
+  font-size: 18px;
+}
+.ab_nav_img{
+  /* 图片相对于 item定位*/
+  position: absolute;
+  top: 18px;
+  right: 0;
+  height: 14px;
+}
+/* 第二个导航栏 */
+.Re_Nav{
+  /* 显示设置高度 子元素即使浮动也将自动继承从而拥有高度*/
+  height: 51px;
+  line-height: 51px;
+  border-top: 1px solid #f2f2f2;
+  padding-left: 230px;
+  padding-right: -50px;
+}
+.re_nav_item{
+  float: left;
+  font-size: 15px;
+  color: #c1c1c1;
+  margin-right: 47px;
+}
+.re_nav_item_link{
+  display: block;
+}
+.re_link_current{
+  color: #31c27c;
+}
+.search_wrap{
+  position: absolute;
+  top: 0;
+  right: 284px;
+}
+.search_input_wrapper{
+  border: 1px solid #c9c9c9;
+  padding: 0 33px 0 11px;
+  height: 36px;
+  line-height: 36px;
+  margin-top: 26px;
+  position: relative;
+  border-radius: 3px;
+  background-color: #fff;
+}
+.search_input{
+  width: 174px;
+  /* 若要继承父元素的高度 必须设置display为block*/
+  height: 36px;
+  border: 0 none;
+  background: 0 0;
+}
+.search_btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0 none;
+  width: 38px;
+  height: 35px;
+  overflow: visible;
+  background: 0 0;
+}
+.search_btn .search_icon{
+  position: absolute;
+  top: 50%;
+  right: 11px;
+  width: 16px;
+  height: 16px;
+  margin-top: -8px;
+  background-position: 0 -40px;
+}
+.search_btn:hover .search_icon{
+  background-position: 0 -60px;
+}
+.recommend_area,.result_area{
+  /* 高度设为0 之后用过渡设置高度形成自上而下的瀑布展示效果 */
+  max-height: 0;
+  visibility: hidden;
+  -webkit-transition: max-height .6s ease-out,visibility 1ms .6s;
+  transition: max-height .6s ease-out,visibility 1ms .6s;
+  overflow: hidden;
+}
+.recommend_area{
+  /* 设置定位
+      此处相对于祖先元素.search_wrap定位 因为它最近的父元素没有设置position(默认为static) 且祖先元素的高度由父元素的兄弟元素.search_input_wrapper撑高
+      高度为36+1+1+26 = 64
+   */
+  position: absolute;
+  top: 63px;
+  left: 0;
+  background-color: #fff;
+  /* 总宽度正好与输入框父元素相等 220px */
+  width: 218px;
+  z-index: 8;
+  border: 1px solid #c9c9c9;
+  font-size: 14px;
+  line-height: 36px;
+  text-align: left;
+}
+.drop{
+  visibility: visible;
+  max-height: 800px;
+  -webkit-transition: max-height .6s ease-out;
+  transition: max-height .6s ease-out;
+}
+.search_hot{
+  padding: 5px 0;
+}
+.search_history{
+  padding: 5px 0;
+  border-bottom: 1px solid #f2f2f2;
+}
+.search_hot_title{
+  display: none;
+}
+.search_hot_link{
+  display: block;
+  overflow: hidden;
+  /* 规定文本不会换行 */
+  white-space: nowrap;
+  /* 当文本溢出元素时用...代替溢出内容 */
+  text-overflow: ellipsis;
+  padding: 0 11px;
+}
+/* 需要注意的是 span行内元素他的高度将继承自某个祖先元素显示设置的行高 line-height */
+.search_hot_link span{
+  cursor: pointer;
+}
+.search_hot_index{
+  color: #ff4222;
+  float: left;
+  width: 18px;
+}
+.search_hot_name{
+  float: left;
+  color: #333;
+  max-width: 140px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.search_hot_num{
+  float: right;
+  color: #999;
+  font-size: 12px;
+}
+.search_history_title{
+  padding-left: 11px;
+  color: #999;
+  position: relative;
+}
+.search_history_clear{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 36px;
+  width: 40px;
+  font-size: 2px;
+  text-align: center;
+}
+.search_history_clear:hover .clear_icon{
+  background-position: -20px -60px;
+}
+.search_history_clear .clear_icon{
+  /* 相对于直接父元素定位*/
+  position: absolute;
+  top: 50%;
+  right: 11px;
+  width: 16px;
+  height: 16px;
+  /* 垂直居中 */
+  margin-top: -8px;
+  background-position: -100px 0;
+}
+.result_area{
+  position: absolute;
+  top: 63px;
+  left: 0;
+  width: 218px;
+  background-color: #fff;
+  border: 1px solid #c9c9c9;
+  z-index: 9;
+  font-size: 14px;
+}
+.search_result_item{
+  padding: 5px 0;
+  border-top: 1px solid #f2f2f2;
+  margin-top: -1px;
+}
+.search_result_item_title{
+  padding: 0 11px 0 41px;
+  line-height: 36px;
+  color: #999;
+  position: relative;
+  font-weight: 400;
+}
+.song_icon{
+  background-position: -20px -220px;
+}
+.singer_icon{
+  background-position: -20px -240px;
+}
+.album_icon{
+  background-position: -40px 0;
+}
+.search_result_link{
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #999;
+  padding: 0 11px 0 41px;
+  line-height: 36px;
+}
+
+/* 自适应*/
+@media (max-width: 1240px) {
+  .section_inner{
+    min-width: 900px;
+    margin: 0 50px;
+  }
+  .search_wrap{
+    right: 189px;
+  }
+}
+
+
+

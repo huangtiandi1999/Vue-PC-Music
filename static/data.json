@@ -1,0 +1,15 @@
+{
+  "Music": [
+    {"singerName": "鹿晗","songName": ["勋章","体会","致爱 Your Song","追梦赤子心","我们的明天"],"Albums": ["勋章","致爱 Your Song"]},
+    {"singerName": "吴青峰","songName": ["起风了","望穿","歌颂者","怪美的"],"Albums": ["怪美的","宝贝儿"]},
+    {"singerName": "陈奕迅","songName": ["十年","红玫瑰","好久不见","你给我听好"],"Albums": ["认了吧","rice & shine"]},
+    {"singerName": "薛之谦","songName": ["演员","天份","刚刚好","认真的雪","意外"],"Album": ["意外","怪咖"]}
+  ],
+  "Recommend": [
+    {"index": 1,"songName": "你是人间四月天","Number": "38.5万"},
+    {"index": 2,"songName": "只是太爱你","Number": "31.5万"},
+    {"index": 3,"songName": "三妻四妾","Number": "26.7万"},
+    {"index": 4,"songName": "溯","Number": "22.4万"},
+    {"index": 5,"songName": "BETTER NOW","Numer": "21.5万"}
+  ]
+}

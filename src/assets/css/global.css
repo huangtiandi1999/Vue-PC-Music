@@ -1,0 +1,73 @@
+blockquote,body,button,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,hr,html,input,lengend,li,ol,p,pre,td,textarea,th,ul {
+  margin: 0;
+  padding: 0
+}
+body,button,input,select,textarea,th {
+  color: #000;
+  background-color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: poppin,Tahoma,Arial,sans-serif;
+}
+body{
+  min-width: 1110px;
+  overflow-y: scroll;
+  font-family: poppin,Tahoma,Arial,\5FAE\8F6F\96C5\9ED1,sans-serif;
+  line-height: 1.5;
+  background-color: #fafafa;
+}
+li{
+  list-style: none;
+}
+h1,h2,h3,h4,h5,h6{
+  font-size: 100%;
+}
+button{
+  cursor: pointer;
+}
+a{
+  color: #000;
+  text-decoration: none;
+}
+a:hover{
+  color: #31c27c;
+  text-decoration: none;
+}
+a:focus,button:focus,input:focus{
+  outline: 0;
+}
+img{
+  border: 0 none;
+  image-rendering: optimizeQuality;
+}
+
+/* 更改设置导航条样式*/
+::-webkit-scrollbar{
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track{
+  background: 0 0;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #ccc;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color: #666;
+}
+
+
+/* 所有的图标 */
+.music_icon{
+  background-image: url("../images/icon_sprite.png");
+}
+.ab_icon{
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 15px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  top: 10px;
+}
