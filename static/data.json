@@ -1,15 +1,29 @@
 {
   "Music": [
-    {"singerName": "鹿晗","songName": ["勋章","体会","致爱 Your Song","追梦赤子心","我们的明天"],"Albums": ["勋章","致爱 Your Song"]},
+    {"singerName": "鹿晗","songName": ["勋章","体会（Nature）","致爱 Your Song","追梦赤子心","我们的明天"],"Albums": ["勋章","致爱 Your Song"]},
     {"singerName": "吴青峰","songName": ["起风了","望穿","歌颂者","怪美的"],"Albums": ["怪美的","宝贝儿"]},
     {"singerName": "陈奕迅","songName": ["十年","红玫瑰","好久不见","你给我听好"],"Albums": ["认了吧","rice & shine"]},
-    {"singerName": "薛之谦","songName": ["演员","天份","刚刚好","认真的雪","意外"],"Album": ["意外","怪咖"]}
+    {"singerName": "薛之谦","songName": ["演员","天份","刚刚好","认真的雪","意外"],"Albums": ["意外","怪咖"]}
   ],
   "Recommend": [
     {"index": 1,"songName": "你是人间四月天","Number": "38.5万"},
     {"index": 2,"songName": "只是太爱你","Number": "31.5万"},
     {"index": 3,"songName": "三妻四妾","Number": "26.7万"},
     {"index": 4,"songName": "溯","Number": "22.4万"},
-    {"index": 5,"songName": "BETTER NOW","Numer": "21.5万"}
-  ]
+    {"index": 5,"songName": "BETTER NOW","Number": "21.5万"}
+  ],
+  "SongLists": {
+    "Recommend": [
+      {"imgPath": "../../../../../static/Carousel/one.jpg","title": "（ ￣ ▽￣） 翻唱也可以很奈斯呀","number": "60.0万"},
+      {"imgPath": "../../../../../static/Carousel/two.jpg","title": "民谣纪念册 : 春暖花开，思念成海","number": "32.2万"},
+      {"imgPath": "../../../../../static/Carousel/three.jpg", "title":"极速跳跃 · Happy Hardcore","number": "3.8万"},
+      {"imgPath": "../../../../../static/Carousel/four.jpg","title": "伤感纯音 · 藏于心底的悲伤情绪","number": "9.2万"},
+      {"imgPath": "../../../../../static/Carousel/five.jpg","title": "淡雅古风 | 梦醒时分别眷恋","number": "22.9万"},
+      {"imgPath": "../../../../../static/Carousel/six.jpg","title": "《创造营2019》歌曲合集","number": "25.5万"},
+      {"imgPath": "../../../../../static/Carousel/seven.jpg","title": "看世界万万千，唯有你一人入眼","number": "6.8万"},
+      {"imgPath": "../../../../../static/Carousel/eight.jpg","title": "舒缓男声｜享受这既暖又丧的温柔","number": "6.5万"},
+      {"imgPath": "../../../../../static/Carousel/nine.jpg","title": "元气日音 : 我愿用脂肪来交换美貌","number": "4.9万"},
+      {"imgPath": "../../../../../static/Carousel/ten.jpg","title": "夏日除燥首选 · Tropical House","number": "2.7万"}
+    ]
+  }
 }

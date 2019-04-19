@@ -31,7 +31,10 @@
   float: left;
   margin-right: -5px;
 }
-.ab_nav_item_link.ab_link_current,.search_hot_link:hover,.search_hot_link:hover span{
+.ab_nav_item_link.ab_link_current,.search_hot_link:hover,
+.search_result_link:hover,
+.search_result_link:hover span,
+.search_hot_link:hover span{
   background-color: #31c27c;
   color: #fff;
 }

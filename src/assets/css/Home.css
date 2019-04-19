@@ -1,0 +1,146 @@
+.mod_index{
+  background: url("../images/bg_detail.jpg") 50% 0 no-repeat;
+  position: relative;
+}
+.index_inner{
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+.index_music_title{
+  position: relative;
+  padding-top: 4.1666%;
+  padding-bottom: 2%;
+}
+.hot_music_head_title{
+  background-position: 0 0;
+  text-indent: -999em;
+}
+.starting_music_head_title{
+  background-position: 0 -50px;
+  text-indent: -999em;
+}
+.hot_music_tab{
+  height: 50px;
+  text-align: center;
+}
+.hot_music_tab_item{
+  display: inline-block;
+  font-size: 15px;
+  margin: 0 24px;
+  color: #333;
+}
+.current_item{
+  color:#31c27c;
+}
+.hot_music_slide{
+  margin-right: -20px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.hot_music_slide_item{
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  font-size: 14px;
+  height: 100%;
+  width: 20%;
+  vertical-align: top;
+  padding-bottom: 0;
+}
+.hot_music_item_box{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-right: 20px;
+}
+.hot_music_item_top{
+  position: relative;
+  display: block;
+  overflow: hidden;
+  /* 将高度撑高因为父元素绝对定位此时父元素高度只能由后面两个子元素撑起来  该元素的高度一定由img元素撑起 但img绝对定位*/
+  padding-top: 100%;
+  margin-bottom: 15px;
+}
+.hot_music_item_top:hover .music_play_img{
+  transform: scale(1.07) translateZ(0);
+  transition: transform .75s cubic-bezier(0,1,.75,1);
+}
+.hot_music_item_top:hover .covers{
+  opacity: .2;
+  transition: opacity .5s;
+}
+.hot_music_item_top:hover .music_play_btn{
+  opacity: .9;
+  transform: scale(1) translateZ(0);
+  transition-property: opacity,transform;
+  transition-duration: .5s;
+  cursor: pointer
+}
+.hot_music_item_img{
+  /* 可以不用设置高度   img元素属于行内替换元素(元素渲染内容由标签的特定属性决定) 类似于块状元素*/
+
+  /* 保证原始比例下内容区域被替换元素覆盖 可能存在替换元素被切割现象*/
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.music_play_img{
+  transform: scale(1) translateZ(0);
+  transition: transform .75s;
+}
+.covers{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0;
+  transition: opacity .5s;
+}
+.music_play_btn{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 70px;
+  height: 70px;
+  margin: -35px 0 0 -35px;
+  opacity: 0;
+  /* 此时高宽为 70 * 0.7 = 49px */
+  transform: scale(.7) translateZ(0);
+  transition-property: opacity,transform;
+  transition-duration: .5s;
+  zoom: 1;
+}
+.hot_play_btn{
+  background-image: url("../images/cover_play.png");
+}
+.hot_music_item_title{
+  overflow: hidden;
+}
+.hot_music_text{
+  white-space: normal;
+  float: left;
+  max-width: 100%;
+  line-height: 22px;
+  max-height: 44px;
+  font-weight: 400;
+}
+.hot_music_item_bottom{
+  color: #999;
+  white-space: nowrap;
+  overflow: hidden;
+  height: 22px;
+}
+/* 自适应 */
+@media (max-width: 1240px) {
+  .index_inner{
+    margin: 0 50px;
+    min-width: 900px;
+  }
+}

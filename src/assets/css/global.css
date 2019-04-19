@@ -59,6 +59,13 @@ img{
 
 
 /* 所有的图标 */
+.head_title{
+  display: block;
+  margin: 0 auto;
+  width: 196px;
+  height: 40px;
+  background-image: url("../images/Music_title.png");
+}
 .music_icon{
   background-image: url("../images/icon_sprite.png");
 }
@@ -70,4 +77,64 @@ img{
   overflow: hidden;
   background-repeat: no-repeat;
   top: 10px;
+}
+/* 更改 element默认的走马灯左右按钮 */
+.el-icon-arrow-right{
+  position: absolute;
+  width: 20px;
+  height: 39px;
+  margin-top: -20px;
+  right: 29px;
+  background: url("../images/icon_sprite.png") 0 -120px;
+}
+.el-icon-arrow-left{
+  position: absolute;
+  width: 20px;
+  height: 39px;
+  margin-top: -20px;
+  right: 29px;
+  background: url("../images/icon_sprite.png") -20px -120px;
+}
+.el-icon-arrow-right::before,.el-icon-arrow-left::before{
+  content: '';
+}
+.el-carousel__arrow--right{
+  right: 0;
+  top: 50%;
+  width: 79px;
+  height: 108px;
+  margin-top: -92px;
+  background-color: rgba(0,0,0,.05);
+  opacity: 1;
+  transition-property: transform,opacity;
+  transition-duration: .5s;
+  z-index: 3;
+  border-radius: 0;
+  border: 0 none;
+  transform: translate3d(100px,0,0);
+}
+.el-carousel__arrow--left{
+  left: -20px;
+  top: 50%;
+  width: 79px;
+  height: 108px;
+  margin-top: -92px;
+  background-color: rgba(0,0,0,.05);
+  opacity: 1;
+  transition-property: transform,opacity;
+  transition-duration: .5s;
+  z-index: 3;
+  border-radius: 0;
+  border: 0 none;
+  transform: translate3d(-100px,0,0);
+}
+.el-carousel__arrow--right:hover,.el-carousel__arrow--left:hover{
+  background: url(#);
+  background: rgba(0,0,0,.1)
+}
+.hot_music_wrap:hover .el-carousel__arrow--right,.hot_music_wrap:hover .el-carousel__arrow--left{
+  opacity: 1;
+  transform: translateX(0);
+  transition-property: opacity,transform,background-color;
+  transition-duration: .5s;
 }
