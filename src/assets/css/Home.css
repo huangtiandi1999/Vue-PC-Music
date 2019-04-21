@@ -21,11 +21,11 @@
   background-position: 0 -50px;
   text-indent: -999em;
 }
-.hot_music_tab{
+.index_music_tab{
   height: 50px;
   text-align: center;
 }
-.hot_music_tab_item{
+.index_music_tab_item{
   display: inline-block;
   font-size: 15px;
   margin: 0 24px;
@@ -64,15 +64,15 @@
   padding-top: 100%;
   margin-bottom: 15px;
 }
-.hot_music_item_top:hover .music_play_img{
+.hot_music_item_top:hover .music_play_img,.hover_play_link:hover .music_play_img{
   transform: scale(1.07) translateZ(0);
   transition: transform .75s cubic-bezier(0,1,.75,1);
 }
-.hot_music_item_top:hover .covers{
+.hot_music_item_top:hover .covers,.hover_play_link:hover .covers{
   opacity: .2;
   transition: opacity .5s;
 }
-.hot_music_item_top:hover .music_play_btn{
+.hot_music_item_top:hover .music_play_btn,.hover_play_link:hover .music_play_btn{
   opacity: .9;
   transform: scale(1) translateZ(0);
   transition-property: opacity,transform;
@@ -137,6 +137,89 @@
   overflow: hidden;
   height: 22px;
 }
+.play_all_btn{
+  position: absolute;
+  left: 0;
+  margin-right: 6px;
+  top: initial;
+  margin-top: -10px;
+  border: 1px solid #c9c9c9;
+  color: #000;
+  border-radius: 2px;
+  height: 38px;
+  line-height: 38px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0 23px;
+  font-size: 14px;
+}
+.play_all_btn:hover{
+  background-color: #ededed;
+  color: #333;
+}
+.play_all_icon{
+  display: inline-block;
+  height: 16px;
+  /* 元素下移 */
+  vertical-align: -3px;
+  width: 13px;
+  background-position: -60px -220px;
+  margin-right: 6px;
+}
+.starting_music_slide{
+  margin: 11px -30px 10px 0;
+  overflow: hidden;
+}
+.starting_music_list_item{
+  width: 33.3%;
+  display: inline-block;
+}
+.starting_music_box{
+  position: relative;
+  height: 86px;
+  overflow: hidden;
+  border-top: 1px solid #f2f2f2;
+  margin: -1px 30px 13px 0;
+  padding-top: 12px;
+  font-size: 14px;
+}
+.starting_music_link{
+  position: relative;
+  float: left;
+  width: 86px;
+  height: 86px;
+  margin-right: 14px;
+  overflow: hidden;
+}
+.startinh_music_img{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.starting_music_play_btn{
+  background-size: 68%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url("../images/cover_play.png");
+}
+
+
+.starting_music_singer{
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #999;
+}
+.singer_name{
+  color: #999;
+}
+
+
+
 /* 自适应 */
 @media (max-width: 1240px) {
   .index_inner{

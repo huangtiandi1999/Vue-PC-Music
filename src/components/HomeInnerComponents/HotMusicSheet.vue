@@ -4,8 +4,8 @@
         <div class="hot_music_head index_music_title">
           <h2 class="hot_music_head_title head_title">歌单推荐</h2>
         </div>
-        <div class="hot_music_tab">
-          <a href="javascript:;" v-for="(item,index) of Lists" class="hot_music_tab_item" @click="toggleComponent(index,item.tabUrl)" :class="{'current_item':index==CurrentIndex}">{{item.tabName}}</a>
+        <div class="hot_music_tab index_music_tab">
+          <a href="javascript:;" v-for="(item,index) of Lists" class="index_music_tab_item" @click="toggleComponent(index,item.tabUrl)" :class="{'current_item':index==CurrentIndex}">{{item.tabName}}</a>
         </div>
         <!-- 组件的过渡 -->
         <transition name="component-fade" mode="out-in">
@@ -47,7 +47,7 @@
     }
 </script>
 
-<style scoped>
+<style>
   .component-fade-enter-active{
     transition: opacity .3s ease;
   }

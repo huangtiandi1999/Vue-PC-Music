@@ -24,6 +24,17 @@
       {"imgPath": "../../../../../static/Carousel/eight.jpg","title": "舒缓男声｜享受这既暖又丧的温柔","number": "6.5万"},
       {"imgPath": "../../../../../static/Carousel/nine.jpg","title": "元气日音 : 我愿用脂肪来交换美貌","number": "4.9万"},
       {"imgPath": "../../../../../static/Carousel/ten.jpg","title": "夏日除燥首选 · Tropical House","number": "2.7万"}
+    ],
+    "Starting": [
+      {"imgPath": "../../../../static/Startinglist/St_1.jpg","title": "装模作样 《一场遇见爱情的旅行》电视剧人物主题曲","singer": "摩登兄弟"},
+      {"imgPath": "../../../../static/Startinglist/St_2.jpg","title": "等得到","singer": "许茹芸"},
+      {"imgPath": "../../../../static/Startinglist/St_3.jpg","title": "Truly","singer": "曾轶可"},
+      {"imgPath": "../../../../static/Startinglist/St_4.jpg","title": "NO GIRL NO CRY","singer": "SILENT SIREN (サイレント・サイレン)"},
+      {"imgPath": "../../../../static/Startinglist/St_5.jpg","title": "大碗宽面","singer": "吴亦凡"},
+      {"imgPath": "../../../../static/Startinglist/St_6.jpg","title": "Julien","singer": "Carly Rae Jepsen"},
+      {"imgPath": "../../../../static/Startinglist/St_7.jpg","title": "小王","singer": "毛不易"},
+      {"imgPath": "../../../../static/Startinglist/St_8.jpg","title": "暖","singer": "闫泽欢"},
+      {"imgPath": "../../../../static/Startinglist/St_9.jpg","title": "Contra La Pared","singer": "Sean Paul"}
     ]
   }
 }
