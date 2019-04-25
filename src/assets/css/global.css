@@ -144,6 +144,24 @@ img{
   margin: 0 auto;
   position: relative;
 }
+.p_btn{
+  min-width: 112px;
+  text-align: center;
+  margin-right: 6px;
+  line-height: 38px;
+  border-radius: 2px;
+  padding: 0 23px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  height: 38px;
+  box-sizing: border-box;
+}
+.icon_size{
+  height: 16px;
+  margin-right: 6px;
+  display: inline-block;
+}
 
 @media (max-width: 1240px) {
   .index_inner{

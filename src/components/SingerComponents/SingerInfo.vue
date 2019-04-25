@@ -10,24 +10,19 @@
             {{this.Info.singer_inf.introduce}}
           </div>
         </div>
-        <ul>
-          <li>
+        <ul class="singer_static_list">
+          <li class="singer_static_list_item" v-for="item of staticTab">
             <a href="javascript:;">
-              <span>单曲</span>
-              <span>{{this.Info.music_inf.songName.length}}</span>
+              <span>{{item.name}}</span>
+              <strong class="singer_static_data_nums">{{item.nums}}</strong>
             </a>
           </li>
-          <li>
-            <a href="javascript:;">
-              <span>专辑</span>
-              <span>{{this.Info.music_inf.Albums.length}}</span>
-            </a>
-          </li>
-          <li></li>
         </ul>
-        <div>
-          <a href="javascript:;"><i></i>播放歌手热门歌曲</a>
-          <a href="javascript:;"><i></i>关注</a>
+        <div class="singer_static_toolbar">
+          <a class="green_btn p_btn" href="javascript:;"><i class="music_icon green_btn_icon"></i>播放歌手热门歌曲</a>
+          <a class="white_btn p_btn" href="javascript:;" @click="toggleState">
+            <i class="music_icon icon_size" :class="{'follow_icon':follow,'unfollow_icon':!follow}"></i>{{follow ? `已关注${fans}` : `关注${fans}`}}
+          </a>
         </div>
       </div>
     </div>
@@ -36,7 +31,23 @@
 <script>
     export default {
       name: "SingerInfo",
-      props:['Info']
+      props:['Info'],
+      data(){
+        return {
+          staticTab:[{name:"单曲",nums:this.Info.music_inf.songName.length},{name:"专辑",nums:this.Info.music_inf.Albums.length}],
+          follow:false,
+        }
+      },
+      computed:{
+        fans(){
+          return this.Info.singer_inf.fans;
+        }
+      },
+      methods:{
+        toggleState(){
+          this.follow=!this.follow;
+        }
+      }
     }
 </script>
 

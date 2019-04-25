@@ -3,7 +3,10 @@
     {"singerName": "鹿晗","songName": ["勋章","体会（Nature）","致爱 Your Song","追梦赤子心","我们的明天"],"Albums": ["勋章","致爱 Your Song"]},
     {"singerName": "吴青峰","songName": ["起风了","望穿","歌颂者","怪美的"],"Albums": ["怪美的","宝贝儿"]},
     {"singerName": "陈奕迅","songName": ["十年","红玫瑰","好久不见","你给我听好"],"Albums": ["认了吧","rice & shine"]},
-    {"singerName": "薛之谦","songName": ["演员","天份","刚刚好","认真的雪","意外"],"Albums": ["意外","怪咖"]}
+    {"singerName": "薛之谦","songName": ["演员","天份","刚刚好","认真的雪","意外"],"Albums": ["意外","怪咖"]},
+    {"singerName": "张杰","songName": ["三生三世","只要平凡","逆战","剑心","时间的远方","如歌"],"Albums": ["相约世界","时间的远方","拾"]},
+    {"singerName": "周杰伦","songName": ["告白气球","晴天","稻香","等你下课(with 杨瑞代)","七里香"],"Albums": ["我很忙","周杰伦的床边故事","范特西"]},
+    {"singerName": "徐良","songName": ["后会无期","客官不可以","坏女孩","七秒钟的记忆","何慕卿(Live)"],"Albums": ["犯贱","不良少年"]}
   ],
   "Recommend": [
     {"index": 1,"songName": "你是人间四月天","Number": "38.5万"},

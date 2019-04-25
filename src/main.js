@@ -31,7 +31,8 @@ axios.get("../static/data.json")
         id:singer.id,
         photo:require("./assets/images/singer/"+singer.name+".jpg"),
         photo1:require("./assets/images/SingerInfoImg/"+singer.name+".jpg"),
-        introduce:singer.introduce
+        introduce:singer.introduce,
+        fans:singer.fans
       }
     });
     music=response.data.Music;

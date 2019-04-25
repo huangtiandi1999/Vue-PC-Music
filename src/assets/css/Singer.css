@@ -54,6 +54,106 @@
   margin-right: 2px;
   white-space: nowrap;
 }
+.singer_static_list{
+  height: 23px;
+  line-height: 23px;
+  overflow: hidden;
+}
+.singer_static_list_item{
+  margin-right: 20px;
+  padding-right: 20px;
+  border-right: 0 none;
+  display: inline-block;
+  text-align: center;
+  font-size: 18px;
+}
+.singer_static_data_nums{
+  font-size: 25px;
+  font-weight: 400;
+  margin-left: 10px;
+}
+.singer_static_toolbar{
+  position: absolute;
+  bottom: 30px;
+}
+.green_btn{
+  border: 1px solid #31c27c;
+  background-color: #31c27c;
+  color: #fff;
+}
+.green_btn:hover{
+  background-color: #2caf6f;
+  border-color: #2caf6f;
+  color: #fff;
+}
+.green_btn:active{
+  background-color: #279c63;
+  border-color: #279c63;
+}
+.white_btn{
+  border: 1px solid #c9c9c9;
+  color: #000;
+}
+.green_btn_icon{
+  width: 13px;
+  background-position: -80px -220px;
+  vertical-align: -3px;
+}
+.follow_icon{
+  width: 16px;
+  background-position: -20px -180px;
+  vertical-align: -4px;
+}
+.unfollow_icon{
+  width: 14px;
+  height: 14px;
+  background-position: -40px -80px;
+  vertical-align: -2px;
+}
+.white_btn:hover{
+  background-color: #ededed;
+  color: #333;
+}
+.singer_list_part{
+  margin-bottom: 30px;
+  position: relative;
+}
+.singer_part_head{
+  overflow: hidden;
+  height: 60px;
+}
+.singer_part_title{
+  float: left;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 58px;
+}
+.song_list_head{
+  height:50px;
+  line-height: 50px;
+  background-color: #fbfbfb;
+  color: #999;
+  padding-left: 46px;
+  padding-right: 100px;
+  position: relative;
+}
+.song_list_head_name{
+  float: left;
+  width: 48%;
+  white-space: normal;
+}
+.song_list_head_album{
+  float: left;
+  width: 26%;
+  padding-left: 20px;
+}
+.song_list_head_time{
+  position: absolute;
+  top: 0;
+  right: 38px;
+  width: 50px;
+}
+
 
 
 /* 自适应 */
