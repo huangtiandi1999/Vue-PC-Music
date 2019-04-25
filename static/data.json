@@ -26,15 +26,21 @@
       {"imgPath": "../../../../../static/Carousel/ten.jpg","title": "夏日除燥首选 · Tropical House","number": "2.7万"}
     ],
     "Starting": [
-      {"imgPath": "../../../../static/Startinglist/St_1.jpg","title": "装模作样 《一场遇见爱情的旅行》电视剧人物主题曲","singer": "摩登兄弟"},
-      {"imgPath": "../../../../static/Startinglist/St_2.jpg","title": "等得到","singer": "许茹芸"},
+      {"imgPath": "../../../../static/Startinglist/St_1.jpg","title": "装模作样 《一场遇见爱情的旅行》电视剧人物主题曲","singer": "摩登兄弟","publishTime": "01:30"},
+      {"imgPath": "../../../../static/Startinglist/St_2.jpg","title": "等得到","singer": "许茹芸","publishTime": "04:30"},
       {"imgPath": "../../../../static/Startinglist/St_3.jpg","title": "Truly","singer": "曾轶可"},
-      {"imgPath": "../../../../static/Startinglist/St_4.jpg","title": "NO GIRL NO CRY","singer": "SILENT SIREN (サイレント・サイレン)"},
-      {"imgPath": "../../../../static/Startinglist/St_5.jpg","title": "大碗宽面","singer": "吴亦凡"},
-      {"imgPath": "../../../../static/Startinglist/St_6.jpg","title": "Julien","singer": "Carly Rae Jepsen"},
-      {"imgPath": "../../../../static/Startinglist/St_7.jpg","title": "小王","singer": "毛不易"},
-      {"imgPath": "../../../../static/Startinglist/St_8.jpg","title": "暖","singer": "闫泽欢"},
-      {"imgPath": "../../../../static/Startinglist/St_9.jpg","title": "Contra La Pared","singer": "Sean Paul"}
+      {"imgPath": "../../../../static/Startinglist/St_4.jpg","title": "NO GIRL NO CRY","singer": "SILENT SIREN (サイレント・サイレン)","publishTime": "02:36"},
+      {"imgPath": "../../../../static/Startinglist/St_5.jpg","title": "大碗宽面","singer": "吴亦凡","publishTime": "14:20"},
+      {"imgPath": "../../../../static/Startinglist/St_6.jpg","title": "Julien","singer": "Carly Rae Jepsen","publishTime": "09:38"},
+      {"imgPath": "../../../../static/Startinglist/St_7.jpg","title": "小王","singer": "毛不易","publishTime": "11:20"},
+      {"imgPath": "../../../../static/Startinglist/St_8.jpg","title": "暖","singer": "闫泽欢","publishTime": "12:30"},
+      {"imgPath": "../../../../static/Startinglist/St_9.jpg","title": "Contra La Pared","singer": "Sean Paul","publishTime": "01:30"}
     ]
-  }
+  },
+  "Singer": [
+    {"id":1,"name": "张杰","photo": "","photo1":"","fans":"753.4万","introduce": "外文名：Jason 国籍：中国 出生地：四川成都 职业：歌手 代表作品：《这，就是爱》、《勿忘心安》、《我们都一样》、《明天过后》"},
+    {"id":2,"name": "徐良","photo": "","photo1":"","fans":"325.6万","introduce": "外文名：L 国籍：中国出生地：山东青岛职业：歌手、艺人代表作品：《七秒钟的记忆》、《坏女孩》、《客官不可以》简介：徐良，1987年2月8日生于山东省青岛市，中国内地男歌手、音乐人。"},
+    {"id":3,"name": "鹿晗","photo": "","photo1":"","fans":"843.2万","introduce": "国籍：中国 出生地：北京市海淀区 生日：1990年4月20日 职业：歌手、演员 代表作：电影《重返20岁》；专辑《Reloaded》；歌曲《我们的明天》、《甜蜜蜜》、《勋章》 "},
+    {"id":4,"name": "周杰伦","photo": "","photo1":"","fans":"1358万","introduce": "外文名：Jay Chou 国籍：中国 出生地：台湾省新北市 职业：音乐人、制作人、导演、企业家等 代表作品：《龙卷风》、《菊花台》、《青花瓷》、《晴天》"}
+  ]
 }

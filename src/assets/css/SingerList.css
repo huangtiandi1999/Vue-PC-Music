@@ -1,0 +1,57 @@
+.singerlist_bg_wrap{
+  position: relative;
+  width: 100%;
+  height: 376px;
+  background: url("../images/bg_singer.jpg") 50% 0 repeat-x;
+  overflow: hidden;
+}
+.singer_follow_title{
+  text-align: center;
+  padding: 60px 0 44px;
+  line-height: 22px;
+}
+.singer_follow_text{
+  color: #fff;
+  margin: 0 32px;
+  font-size: 18px;
+}
+.singer_follow_slide{
+  width: 750px;
+  margin: 0 auto 20px;
+  overflow: hidden;
+}
+.singer_slide_list{
+  position: relative;
+}
+.singer_list_item{
+  float: left;
+  height: 150px;
+}
+.singer_list_item_link{
+  display: block;
+  position: relative;
+  background-color: #000;
+}
+.singer_img{
+  -webkit-filter: grayscale(100%);
+  width: 100%;
+  opacity: .8;
+  filter: alpha(opacity=70);
+}
+/* 鼠标悬浮时 出现绿色边框*/
+.singer_list_item_link:hover .singer_img_border{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: 140px;
+  border: 5px solid #31c27c;
+}
+.singer_list_item_link:hover .singer_img{
+  opacity: 1;
+  filter: none;
+  -webkit-filter: grayscale(0%);
+  transition-property: opacity;
+  transition-duration: .3s;
+}
+

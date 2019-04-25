@@ -2,12 +2,6 @@
   background: url("../images/bg_detail.jpg") 50% 0 no-repeat;
   position: relative;
 }
-.index_inner{
-  overflow: hidden;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-}
 .index_music_title{
   position: relative;
   padding-top: 4.1666%;
@@ -217,13 +211,25 @@
 .singer_name{
   color: #999;
 }
-
+.starting_music_publish{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  line-height: 86px;
+  color: #999;
+}
+.starting_music_name{
+  font-size: 14px;
+  padding: 21px 0 2px;
+  max-width: 50%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 400;
+}
 
 
 /* 自适应 */
 @media (max-width: 1240px) {
-  .index_inner{
-    margin: 0 50px;
-    min-width: 900px;
-  }
+
 }

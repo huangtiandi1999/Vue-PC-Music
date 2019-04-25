@@ -1,0 +1,65 @@
+.singer_main{
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+.singer_info{
+  position: relative;
+  height: 250px;
+  padding-left: 305px;
+  margin-top: 40px;
+  margin-bottom: 35px;
+}
+.singer_img_wrap{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 250px;
+}
+.singer_big_img{
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.singer_introduce{
+  padding-top: 31px;
+}
+.singer_intro_name{
+  overflow: hidden;
+  line-height: 50px;
+  height: 50px;
+}
+.singer_intro_h{
+  float: left;
+  font-size: 38px;
+  font-weight: 400;
+  white-space: nowrap;
+  margin-right: 10px;
+  line-height: 50px;
+}
+.singer_intro_main{
+  margin-bottom: 4px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 14px;
+}
+.singer_intro_main_des_text{
+  float: left;
+  max-width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 2px;
+  white-space: nowrap;
+}
+
+
+/* 自适应 */
+@media (max-width: 1240px) {
+  .singer_main{
+    min-width: 900px;
+    margin: 0 50px;
+  }
+}

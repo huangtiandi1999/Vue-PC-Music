@@ -3,7 +3,9 @@
     <!-- 头部导航组件 -->
     <Header></Header>
     <!--主要部分 -->
-    <router-view/>
+    <transition name="component-fade">
+      <router-view/>
+    </transition>
     <!-- 悬挂件 -->
     <div class="fixed_download">
       <img class="fixed_download_img" src="http://imgcache.gtimg.cn/mediastyle/yqq/img/logo.png"/>
@@ -19,7 +21,8 @@ export default {
   name: 'App',
   components:{
     Header,
-  }
+  },
+
 }
 </script>
 

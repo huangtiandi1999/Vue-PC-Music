@@ -138,3 +138,16 @@ img{
   transition-property: opacity,transform,background-color;
   transition-duration: .5s;
 }
+.index_inner{
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+@media (max-width: 1240px) {
+  .index_inner{
+    margin: 0 50px;
+    min-width: 900px;
+  }
+}

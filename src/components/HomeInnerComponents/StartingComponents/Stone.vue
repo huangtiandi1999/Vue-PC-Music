@@ -9,7 +9,7 @@
               <i class="music_play_btn starting_music_play_btn"></i>
             </a>
             <div>
-              <h3>
+              <h3 class="starting_music_name">
                 <a href="javascript:;">
                   <span>{{item.title}}</span>
                 </a>
@@ -18,6 +18,7 @@
                 <a class="singer_name" href="javascript:;">{{item.singer}}</a>
               </p>
             </div>
+            <div class="starting_music_publish">{{item.publishTime}}</div>
           </div>
         </li>
       </ul>

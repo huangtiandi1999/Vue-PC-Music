@@ -6,28 +6,62 @@ import router from './router'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/global.css'
 import axios from 'axios'
-import {Carousel,CarouselItem,Button} from "element-ui";
+import {Carousel,CarouselItem,Loading} from "element-ui";
 import Vuex from 'vuex'
 
 Vue.config.productionTip = false
 Vue.use(Carousel);
 Vue.use(CarouselItem);
-Vue.use(Button);
+Vue.use(Loading);
 Vue.use(Vuex);
 
 
 /* eslint-disable no-new */
 var songList={}
+var singers=[]
+var music=[]
 axios.get("../static/data.json")
   .then((response)=>{
     // 将歌单数据保存到songList
     console.log("给劲嗷，铁汁");
     songList=response.data.SongLists;
-    var store={
-      state:{
-        Lists:songList
+    singers=response.data.Singer.map(singer=>{
+      return {
+        name:singer.name,
+        id:singer.id,
+        photo:require("./assets/images/singer/"+singer.name+".jpg"),
+        photo1:require("./assets/images/SingerInfoImg/"+singer.name+".jpg"),
+        introduce:singer.introduce
+      }
+    });
+    music=response.data.Music;
+    const state={
+      showHeader:true,
+      Lists:songList,
+      Singers:singers,
+      Music:music
+    }
+    const getters={
+      isShow(state) {
+        return state.showHeader;
       }
     }
+    const mutations={
+      hide(state){
+        state.showHeader=false;
+      }
+    }
+    const actions={
+      hideHeader(context){
+        context.commit('hide');
+      }
+    }
+    const store=new Vuex.Store({
+      state,
+      getters,
+      mutations,
+      actions
+    })
     new Vue({
       el: '#app',
       router,
