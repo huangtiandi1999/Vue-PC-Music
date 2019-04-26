@@ -1,7 +1,7 @@
 <template>
-    <div class="singer_main">
+    <div class="singer_main" v-if="singerInformation">
       <!-- 歌手介绍区域 父子组件通信-->
-      <SingerInfo v-if="singerInformation" :Info="singerInformation"></SingerInfo>
+      <SingerInfo :Info="singerInformation"></SingerInfo>
       <!-- 歌手作品区域 -->
       <div class="singer_wrap">
         <div class="singer_list_part">
@@ -15,7 +15,25 @@
               <li class="song_list_head_time">时长</li>
             </ul>
             <ul class="song_list_content">
-
+              <li v-for="(item,index) of singerInformation.music_inf.songName">
+                <div class="song_list_item">
+                  <div class="song_list_item_index song_list_col">{{index+1}}</div>
+                  <div class="song_list_songname song_list_col">
+                    <i class="music_icon dujia_icon" title="独家"></i>
+                    <span class="song_list_songname_text">
+                      <a href="javascript:;">{{item}}</a>
+                    </span>
+                    <div class="tool_nav_menu">
+                      <a href="javascript:;" class="tool_menu_item tool_play" title="播放"><i class="play_icon song_menu_icon"></i></a>
+                      <a href="javascript:;" class="tool_menu_item tool_add" title="添加到歌单"><i class="add_icon song_menu_icon"></i></a>
+                      <a href="javascript:;" class="tool_menu_item tool_download" title="下载"><i class="download_icon song_menu_icon"></i></a>
+                      <a href="javascript:;" class="tool_menu_item tool_share" title="分享"><i class="share_icon song_menu_icon"></i></a>
+                    </div>
+                  </div>
+                  <div class="song_list_albumname song_list_col"><a href="javascript:;">专辑数据暂时未录入</a></div>
+                  <div class="song_list_songtime song_list_col">04:00</div>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
@@ -33,8 +51,6 @@
       data(){
         return{
           singerInformation:null,
-          headLists:["歌曲","专辑","时长"],
-
         }
       },
       created() {
@@ -62,7 +78,7 @@
                 }
                 loading.close();
                 resolve("请求完成");
-              },1000);
+              },500);
             }
             catch (e) {
               reject(e);

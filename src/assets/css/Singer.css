@@ -139,12 +139,12 @@
 }
 .song_list_head_name{
   float: left;
-  width: 48%;
+  width: 47.685185%;
   white-space: normal;
 }
 .song_list_head_album{
   float: left;
-  width: 26%;
+  width: 25.5%;
   padding-left: 20px;
 }
 .song_list_head_time{
@@ -153,6 +153,104 @@
   right: 38px;
   width: 50px;
 }
+.song_list_content{
+  overflow: hidden;
+  clear: both;
+}
+.song_list_item{
+  overflow: hidden;
+  position: relative;
+  padding: 0 95px 0 46px;
+}
+.song_list_col{
+  height: 50px;
+  line-height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+}
+.song_list_item_index{
+  position: absolute;
+  top: 0;
+  left: 10px;
+  color: #999;
+  width: 36px;
+}
+.song_list_songname{
+  float: left;
+  width: 48%;
+  position: relative;
+  white-space: normal;
+}
+.song_list_albumname{
+  float: left;
+  padding-left: 15px;
+  width: 26%;
+  box-sizing: border-box;
+}
+.song_list_albumname a{
+  color: rgb(153,153,153);
+}
+.song_list_songtime{
+  color: #999;
+  position: absolute;
+  top: 0;
+  right: 38px;
+  width: 50px;
+}
+.tool_nav_menu{
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  height: 36px;
+}
+.song_list_item:hover .tool_nav_menu{
+  opacity: 1;
+  pointer-events: inherit;
+  margin-top: -18px;
+}
+.tool_menu_item{
+  margin-right: 7px;
+  display: inline-block;
+  vertical-align: top;
+}
+.dujia_icon{
+  display: inline-block;
+  width: 34px;
+  height: 16px;
+  background-position: -80px -280px;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+.song_list_songname_text{
+  /* 会继承来自父元素 设置的line-height*/
+  float: left;
+  max-width: 72%;
+  margin-right: 8px;
+  overflow: hidden;
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.play_icon{
+  background-position: 0 0;
+}
+.add_icon{
+  background-position: 0 -80px;
+}
+.download_icon{
+  background-position: 0 -120px;
+}
+.share_icon{
+  background-position: 0 -40px;
+}
+
+
+
 
 
 
@@ -161,5 +259,8 @@
   .singer_main{
     min-width: 900px;
     margin: 0 50px;
+  }
+  .tool_menu_item{
+    margin-right: 3px;
   }
 }

@@ -162,6 +162,13 @@ img{
   margin-right: 6px;
   display: inline-block;
 }
+.song_menu_icon{
+  background-image: url("../images/icon_list_menu.png");
+  display: block;
+  background-repeat: no-repeat;
+  height: 36px;
+  width: 36px;
+}
 
 @media (max-width: 1240px) {
   .index_inner{
