@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <!-- 头部导航组件 -->
-    <Header></Header>
+    <Header v-if="show"></Header>
     <!--主要部分 -->
     <transition name="component-fade">
       <router-view/>
     </transition>
     <!-- 悬挂件 -->
-    <div class="fixed_download">
+    <div v-show="show" class="fixed_download">
       <img class="fixed_download_img" src="http://imgcache.gtimg.cn/mediastyle/yqq/img/logo.png"/>
       <p class="fixed_download_text">千万高品质曲库尽享</p>
       <a class="fixed_download_btn" href="javascript:;"><i class="music_icon fixed_download_btn_icon"></i>PC版下载</a>
@@ -22,7 +22,11 @@ export default {
   components:{
     Header,
   },
-
+  computed:{
+    show(){
+      return this.$store.getters.isShow;
+    }
+  }
 }
 </script>
 

@@ -50,11 +50,17 @@ axios.get("../static/data.json")
     const mutations={
       hide(state){
         state.showHeader=false;
+      },
+      show(state){
+        state.showHeader=true;
       }
     }
     const actions={
       hideHeader(context){
         context.commit('hide');
+      },
+      showHeader(context){
+        context.commit('show');
       }
     }
     const store=new Vuex.Store({

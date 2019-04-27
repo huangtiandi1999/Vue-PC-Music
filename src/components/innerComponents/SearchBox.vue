@@ -40,7 +40,11 @@
             <h4 class="search_result_item_title"><i class="music_icon song_icon ab_icon"></i>单曲</h4>
             <ul class="search_result_item_list">
               <li v-for="(item,index) in FilterMusic.songName" :key="index">
-                <a class="search_result_link" href="javascript:;">{{item.song}}<span>{{item.singer}}</span></a>
+                <a class="search_result_link" href="javascript:;">
+                  <span class="search_result_name" v-html="insertKeywordsStyle(item.song,keywords)"></span>-
+
+                  <span class="search_result_singername" v-html="insertKeywordsStyle(item.singer,keywords)"></span>
+                </a>
               </li>
             </ul>
           </div>
@@ -49,7 +53,7 @@
             <h4 class="search_result_item_title"><i class="music_icon singer_icon ab_icon"></i>歌手</h4>
             <ul class="search_result_item_list">
               <li v-for="(item,index) in FilterMusic.singerName" :key="index">
-                <a class="search_result_link" href="javascript:;">{{item}}</a>
+                <a class="search_result_link" href="javascript:;" @click="intoSingerIndex(item)" v-html="insertKeywordsStyle(item,keywords)"></a>
               </li>
             </ul>
           </div>
@@ -58,7 +62,11 @@
             <h4 class="search_result_item_title"><i class="music_icon album_icon ab_icon"></i>专辑</h4>
             <ul class="search_result_item_list">
               <li v-for="(item,index) in FilterMusic.Albums" :key="index">
-                <a class="search_result_link" href="javascript:;">{{item.album}}<span>{{item.singer}}</span></a>
+                <a class="search_result_link" href="javascript:;">
+                  <span class="search_result_name" v-html="insertKeywordsStyle(item.album,keywords)"></span>-
+
+                  <span class="search_result_singername" v-html="insertKeywordsStyle(item.singer,keywords)"></span>
+                </a>
               </li>
             </ul>
           </div>
@@ -101,6 +109,18 @@
             return item;
           },[]);
           return result;
+        },
+        intoSingerIndex(name){
+          this.$router.push({name:'Singer',params:{sn:name}});
+        },
+        // 给关键字实时添加高亮显示
+        insertKeywordsStyle(text,keyword){
+          text = text +'';
+          if(!!~text.indexOf(keyword) && !!keyword){
+            return text.replace(keyword,'<span class="search_result__keywords">'+keyword+'</span>');
+          }else{
+            return text;
+          }
         }
       },
       watch:{
@@ -114,17 +134,17 @@
                 _self.clearMusic();
                 _self.FilterMusic.singerName.add(item.singerName);
                 // 取得该歌手前五首歌和 前两张专辑展示
-                item.songName.forEach(
-                  value => _self.FilterMusic.songName.push({"song":value,"singer":key})
+                item.songName.slice(0,5).forEach(
+                  value => _self.FilterMusic.songName.push({"song":value.name,"singer":key})
                 );
-                item.Albums.forEach(
+                item.Albums.slice(0,2).forEach(
                   value => _self.FilterMusic.Albums.push({"singer":key,"album":value})
                 );
                 break;
               }else {
               //  歌名模糊搜索
                 for(let m of item.songName){
-                  if(!!~m.indexOf(key)){
+                  if(!!~m.name.indexOf(key)){
                     _self.FilterMusic.songName.push({"song":m,"singer":item.singerName});
                     // 数组去重 根据reduce函数的参数的特点 此时的item表示arguments[0]且初始值为[] next表示数组的第一项
                     _self.FilterMusic.songName=_self.ReduceArray(_self.FilterMusic.songName);

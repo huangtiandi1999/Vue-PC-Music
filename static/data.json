@@ -1,12 +1,12 @@
 {
   "Music": [
-    {"singerName": "鹿晗","songName": ["勋章","体会（Nature）","致爱 Your Song","追梦赤子心","我们的明天"],"Albums": ["勋章","致爱 Your Song"]},
-    {"singerName": "吴青峰","songName": ["起风了","望穿","歌颂者","怪美的"],"Albums": ["怪美的","宝贝儿"]},
-    {"singerName": "陈奕迅","songName": ["十年","红玫瑰","好久不见","你给我听好"],"Albums": ["认了吧","rice & shine"]},
-    {"singerName": "薛之谦","songName": ["演员","天份","刚刚好","认真的雪","意外"],"Albums": ["意外","怪咖"]},
-    {"singerName": "张杰","songName": ["三生三世","只要平凡","逆战","剑心","时间的远方","如歌"],"Albums": ["相约世界","时间的远方","拾"]},
-    {"singerName": "周杰伦","songName": ["告白气球","晴天","稻香","等你下课(with 杨瑞代)","七里香"],"Albums": ["我很忙","周杰伦的床边故事","范特西"]},
-    {"singerName": "徐良","songName": ["后会无期","客官不可以","坏女孩","七秒钟的记忆","何慕卿(Live)"],"Albums": ["犯贱","不良少年"]}
+    {"singerName": "鹿晗","songName": [{"name": "勋章","album": "勋章","photo": ""},{"name": "体会（Nature）","album": "π-volume.1","photo": ""},{"name": "致爱 Your Song","album": "致爱 Your Song","photo": ""},{"name": "追梦赤子心","album": "追梦赤子心","photo": ""},{"name": "我们的明天","album": "重返20岁 电影原声带","photo": ""}],"Albums": ["勋章","致爱 Your Song"]},
+    {"singerName": "吴青峰","songName": [{"name": "起风了","album": "空","photo": ""},{"name": "望穿","album": "歌手第三季 第13期","photo": ""},{"name": "歌颂者","album": "歌颂者","photo": ""},{"name": "怪美的","album": "歌手第三季 第14期","photo": ""}],"Albums": ["怪美的","宝贝儿"]},
+    {"singerName": "陈奕迅","songName": [{"name": "十年","album": "黑白灰","photo": ""},{"name": "红玫瑰","album": "认了吧","photo": ""},{"name": "好久不见","album": "认了吧","photo": ""},{"name": "富士山下","album": "What's Going On…?","photo": ""}],"Albums": ["认了吧","rice & shine"]},
+    {"singerName": "薛之谦","songName": [{"name": "演员","album": "绅士","photo": ""},{"name": "刚刚好","album": "初学者","photo": ""},{"name": "我好像在哪里见过你","album": "初学者","photo": ""},{"name": "意外","album": "意外","photo": ""},{"name": "丑八怪","album": "意外","photo": ""}],"Albums": ["意外","怪咖"]},
+    {"singerName": "张杰","songName": [{"name": "三生三世","album": "三生三世十里桃花 电视剧原声带","photo": ""},{"name": "只要平凡","album": "只要平凡","photo": ""},{"name": "时间的远方","album": "时间的远方","photo": ""},{"name": "剑心","album": "古剑奇谭 电视剧原声带","photo": ""},{"name": "夜空中最亮的星","album": "我是歌手第二季 第8期","photo": ""},{"name": "逆战","album": "One Chance新歌","photo": ""}],"Albums": ["相约世界","时间的远方","拾"]},
+    {"singerName": "周杰伦","songName": [{"name": "告白气球","album": "周杰伦床边的故事","photo": ""},{"name": "晴天","album": "叶惠美","photo": ""},{"name": "稻香","album": "魔杰座","photo": ""},{"name": "等你下课(with 杨瑞代)","album": "等你下课","photo": ""},{"name": "以父之名","album": "叶惠美","photo": ""}],"Albums": ["我很忙","周杰伦的床边故事","范特西"]},
+    {"singerName": "徐良","songName": [{"name": "后会无期","album": "不良少年","photo": ""},{"name": "客官不可以","album": "犯贱","photo": ""},{"name": "坏女孩","album": "不良少年","photo": ""},{"name": "七秒钟的记忆","album": "北京巷弄","photo": ""},{"name": "何慕卿","album": "这！就是原创 第三期","photo": ""}],"Albums": ["犯贱","不良少年"]}
   ],
   "Recommend": [
     {"index": 1,"songName": "你是人间四月天","Number": "38.5万"},

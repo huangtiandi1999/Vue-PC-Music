@@ -19,7 +19,7 @@
           </li>
         </ul>
         <div class="singer_static_toolbar">
-          <a class="green_btn p_btn" href="javascript:;"><i class="music_icon green_btn_icon"></i>播放歌手热门歌曲</a>
+          <a class="green_btn p_btn" href="javascript:;"><i class="green_btn_icon music_icon icon_size"></i>播放歌手热门歌曲</a>
           <a class="white_btn p_btn" href="javascript:;" @click="toggleState">
             <i class="music_icon icon_size" :class="{'follow_icon':follow,'unfollow_icon':!follow}"></i>{{follow ? `已关注${fans}` : `关注${fans}`}}
           </a>
