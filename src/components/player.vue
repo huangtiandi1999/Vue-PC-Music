@@ -1,7 +1,7 @@
 <template>
     <div>
-      {{singerName}}
       {{songName}}
+      {{singerName}}
     </div>
 </template>
 
@@ -10,12 +10,13 @@
       name: "player",
       data(){
         return {
-          singerName:this.$route.params.singer,
-          songName:this.$route.params.song
+          songName:this.$route.query.song,
+          singerName:this.$route.query.singer
         }
       },
       //设置导航守卫
       beforeRouteEnter(to,from,next){
+        //用回调方式获取该组件实例
         next(vm => {
           vm.$store.dispatch('hideHeader');
         })

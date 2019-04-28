@@ -96,7 +96,7 @@
             })
         },
         playSong(song,singer){
-          this.$router.push({name:'player',params:{song,singer}})
+          this.$router.push({name:'player',query:{singer,song}})
         }
       }
     }

@@ -268,6 +268,47 @@
   color: #31c27c;
 }
 
+/* 登陆区域 */
+.header_login_wrap{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 90px;
+  line-height: 90px;
+}
+.header_mod_login{
+  font-size: 0;
+  height: 90px;
+  line-height: 90px;
+}
+.header_login_link{
+  position: relative;
+  float: left;
+  width: 38px;
+  margin-right: 10px;
+  text-align: center;
+  font-size: 16px;
+}
+.pay_diamant_vert_btn{
+  line-height: 39px;
+  margin: 24px 0 0 10px;
+  padding: 0 9px;
+  border: 1px solid #31c27c;
+  background-color: #31c27c;
+  color: #fff;
+  font-size: 13px;
+  border-radius: 2px;
+  height: 38px;
+  display: inline-block;
+  white-space: nowrap;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.pay_diamant_vert_btn:hover{
+  background-color: #2caf6f;
+  border-color: #2caf6f;
+  color: #fff;
+}
 
 
 

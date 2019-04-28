@@ -11,7 +11,6 @@
     </ul>
 </template>
 
-<img src="../../assets/images/mark_1.png" height="23" width="61"/>
 <script>
     export default {
         name: "AbNav"

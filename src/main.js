@@ -6,15 +6,19 @@ import router from './router'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/global.css'
 import axios from 'axios'
-import {Carousel,CarouselItem,Loading} from "element-ui";
+import {Carousel,CarouselItem,Dialog,Button,Input,Loading,Message} from "element-ui";
 import Vuex from 'vuex'
 
 Vue.config.productionTip = false
 Vue.use(Carousel);
-Vue.use(CarouselItem);
+Vue.use(Input);
+Vue.use(Button);
+Vue.use(Dialog);
 Vue.use(Loading);
+Vue.use(CarouselItem);
 Vue.use(Vuex);
 
+Vue.prototype.$message = Message;
 
 /* eslint-disable no-new */
 var songList={}

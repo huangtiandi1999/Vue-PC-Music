@@ -12,6 +12,7 @@
         <!-- 搜索框 -->
         <SearchBox></SearchBox>
         <!-- 用户头像区域 -->
+        <component :is="CurrentComponent"></component>
       </div>
     </div>
 </template>
@@ -20,12 +21,20 @@
   import AbNav from './innerComponents/AbNav'
   import ReNav from './innerComponents/ReNav'
   import SearchBox from './innerComponents/SearchBox'
+  import UnLoginArea from './innerComponents/UnLoginArea'
     export default {
       name: "Header",
       components:{
         AbNav,
         ReNav,
-        SearchBox
+        SearchBox,
+        UnLoginArea
+      },
+      data(){
+        return {
+          // 暂时存放一个组件依赖
+          CurrentComponent:'UnLoginArea'
+        }
       }
     }
 
