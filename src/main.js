@@ -44,11 +44,19 @@ axios.get("../static/data.json")
       showHeader:true,
       Lists:songList,
       Singers:singers,
-      Music:music
+      Music:music,
+      Login:false,
+      user:null
     }
     const getters={
       isShow(state) {
         return state.showHeader;
+      },
+      isLogin(state){
+        return state.Login;
+      },
+      User(state){
+        return state.user;
       }
     }
     const mutations={
@@ -57,6 +65,17 @@ axios.get("../static/data.json")
       },
       show(state){
         state.showHeader=true;
+      },
+      loginIn(state){
+        state.Login = true;
+      },
+      loginOut(state){
+        state.Login = false;
+      },
+      setUser(state,user){
+        if(!!user){
+          state.user=user;
+        }
       }
     }
     const actions={
@@ -65,6 +84,15 @@ axios.get("../static/data.json")
       },
       showHeader(context){
         context.commit('show');
+      },
+      loginInMusic(context){
+        context.commit('loginIn');
+      },
+      loginOutMusic(context){
+        context.commit('loginOut');
+      },
+      SetUser(context,user){
+        context.commit('setUser',user)
       }
     }
     const store=new Vuex.Store({

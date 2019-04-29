@@ -60,6 +60,7 @@
       },
       created() {
         this.FilterSingerData();
+        document.title=this.$route.params.sn+" - Music-千万正版音乐海量无损曲库新歌热歌天天畅听的高品质音乐平台！"
       },
       watch:{
         '$route':'FilterSingerData'

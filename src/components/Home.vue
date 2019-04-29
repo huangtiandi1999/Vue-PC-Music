@@ -15,6 +15,9 @@
       components:{
         HotMusicSheet,
         StartingMusic
+      },
+      created() {
+        document.title="Music-千万正版音乐海量无损曲库新歌热歌天天畅听的高品质音乐平台！"
       }
     }
 </script>

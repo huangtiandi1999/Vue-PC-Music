@@ -22,18 +22,24 @@
   import ReNav from './innerComponents/ReNav'
   import SearchBox from './innerComponents/SearchBox'
   import UnLoginArea from './innerComponents/UnLoginArea'
+  import LoginAfter from './innerComponents/LoginAfter'
     export default {
       name: "Header",
       components:{
         AbNav,
         ReNav,
         SearchBox,
-        UnLoginArea
+        UnLoginArea,
+        LoginAfter
       },
       data(){
         return {
-          // 暂时存放一个组件依赖
-          CurrentComponent:'UnLoginArea'
+
+        }
+      },
+      computed:{
+        CurrentComponent(){
+          return this.$store.getters.isLogin ? "LoginAfter" : "UnLoginArea";
         }
       }
     }

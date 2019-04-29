@@ -118,7 +118,7 @@
 .search_btn:hover .search_icon{
   background-position: 0 -60px;
 }
-.recommend_area,.result_area{
+.recommend_area,.result_area,.userinfo_area{
   /* 高度设为0 之后用过渡设置高度形成自上而下的瀑布展示效果 */
   max-height: 0;
   visibility: hidden;
@@ -309,6 +309,32 @@
   border-color: #2caf6f;
   color: #fff;
 }
+.header_logined_link{
+  position: relative;
+  font-size: 16px;
+  float: left;
+  width: 38px;
+  margin-right: 10px;
+  text-align: center;
+}
+.user_head_img{
+  width: 38px;
+  height: 38px;
+  border-radius: 90px;
+  vertical-align: -14px;
+}
+.userinfo_area{
+  position: absolute;
+  right: 0;
+  top: 90px;
+  width: 288px;
+  background-color: #fff;
+  z-index: 9;
+  line-height: 1.5;
+  border: 1px solid #f2f2f2;
+  font-size: 13px;
+}
+
 
 
 

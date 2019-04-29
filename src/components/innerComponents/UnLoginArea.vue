@@ -37,12 +37,6 @@
         }
       },
       methods:{
-        open(){
-          this.$message({
-            message:"年忙死了",
-            type:'success'
-          })
-        },
         requestLogin(){
           let that=this;
           let accountVal = {account:this.account,password: this.password}
@@ -55,6 +49,12 @@
                 type: 'success',
                 duration:2000
               });
+              // 保存用户信息到状态管理vuex
+              this.$store.dispatch('SetUser',user);
+              // 关闭登录模态框
+              this.centerDialogVisible=false;
+              // 更改header组件中登录状态
+              this.$store.dispatch('loginInMusic');
             }else{
               this.$message({
                 message: '登陆失败，请检查',

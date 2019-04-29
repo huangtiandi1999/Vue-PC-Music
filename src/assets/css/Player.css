@@ -1,0 +1,90 @@
+.play_logo{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 3;
+}
+.play_logo_img{
+  opacity: .3;
+  filter:alpha(opacity=30);
+}
+.play_logo_img:hover{
+  opacity: 1;
+  filter: none;
+}
+.play_login_wrap{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 9;
+  text-align: right;
+  padding-right: 28px;
+}
+.des_text{
+  float: left;
+  margin-right: 26px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 30px;
+}
+.download_client_btn{
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 17px;
+  font-size: 15px;
+  text-align: center;
+  background-color: #31c27c;
+  color: #fff;
+  border-radius: 28px;
+  height: 28px;
+}
+.download_client_btn:hover{
+  color: #fff;
+  background-color: #2caf6f;
+}
+.play_set_btn{
+  position: relative;
+  float: left;
+  margin-right: 15px;
+  font-size: 0;
+}
+.play_set_btn:hover .play_set_text{
+  opacity: 1;
+}
+.play_set_text{
+  display: inline-block;
+  max-width: 124px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+  font-size: 14px;
+  opacity: .3;
+  color: #fff;
+  line-height: 30px;
+}
+
+/* 主体内容 */
+
+.mod_player{
+  margin: 0 7%;
+  color: rgba(225,225,225,.8);
+  height: 100%;
+  position: relative;
+  z-index: 3;
+}
+.mod_player_body{
+  position: absolute;
+  top: 11%;
+  bottom: 18%;
+  width: 100%;
+  min-height: 328px;
+  cursor: default;
+}
+
+/* 自适应 */
+@media (max-width: 1300px) {
+  .mod_player{
+    margin: 0 6%;
+  }
+}
