@@ -46,7 +46,8 @@ axios.get("../static/data.json")
       Singers:singers,
       Music:music,
       Login:false,
-      user:null
+      user:null,
+      nowPlay:null,
     }
     const getters={
       isShow(state) {
@@ -57,6 +58,9 @@ axios.get("../static/data.json")
       },
       User(state){
         return state.user;
+      },
+      NowPlay(state){
+        return state.nowPlay;
       }
     }
     const mutations={
@@ -73,9 +77,10 @@ axios.get("../static/data.json")
         state.Login = false;
       },
       setUser(state,user){
-        if(!!user){
-          state.user=user;
-        }
+        state.user=user;
+      },
+      setNowPlay(state,songinfo){
+        state.nowPlay=songinfo;
       }
     }
     const actions={
@@ -93,6 +98,9 @@ axios.get("../static/data.json")
       },
       SetUser(context,user){
         context.commit('setUser',user)
+      },
+      SetNowPlay(context,songinfo){
+        context.commit('setNowPlay',songinfo);
       }
     }
     const store=new Vuex.Store({

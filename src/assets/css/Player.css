@@ -33,6 +33,7 @@
   padding: 0 17px;
   font-size: 15px;
   text-align: center;
+  line-height: 28px;
   background-color: #31c27c;
   color: #fff;
   border-radius: 28px;
@@ -81,10 +82,115 @@
   min-height: 328px;
   cursor: default;
 }
+.mod_default_body{
+  margin-right: 440px;
+}
+.mod_player_toolbar{
+  margin-left: 1px;
+  position: relative;
+  margin-bottom: 20px;
+  /* 防止元素间不必要的间距 否则实际宽度莫名其妙增长 */
+  font-size: 0;
+}
+.mod_toolbar_btn{
+  border: 1px solid #c9c9c9;
+  font-size: 14px;
+  opacity: .8;
+  border-color: rgba(255,255,255,.2);
+  text-align: center;
+  color: #fff;
+  background-color: transparent;
+  min-width: 122px;
+}
+.mod_toolbar_btn i{
+  opacity: .6;
+}
+.operate_icon{
+  display: inline-block;
+  margin-right: 6px;
+  width: 16px;
+  height: 16px;
+  vertical-align: -3px;
+}
+.play_like_icon{
+  background-position: -60px -20px;
+  vertical-align: -4px;
+}
+.play_add_icon{
+  background-position: -20px -20px;
+}
+.play_download_icon{
+  background-position: -40px -240px;
+}
+.play_delete_icon{
+  background-position: -100px -20px;
+}
+.play_clear_icon{
+  height: 17px;
+  width: 17px;
+  background-position: -40px -300px;
+}
+.mod_toolbar_btn:hover{
+  opacity: 1;
+  filter: none;
+  border-color: rgba(255,255,255,1);
+  color: #fff;
+}
+.mod_toolbar_btn:hover i{
+  opacity: 1;
+}
+.mod_default_view{
+  height: 482px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin-right: 0;
+}
+.mod_songlist{
+  margin-right: 0;
+}
+i.play_line{
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  opacity: .02;
+}
+.mod_songlist_header{
+  padding-left: 62px;
+  padding-right: 95px;
+  height: 50px;
+  position: relative;
+  line-height: 50px;
+  background-color: transparent;
+  color: inherit;
+}
+.song_name{
+  float: left;
+  width: 68%;
+  position: relative;
+  white-space: normal;
+}
+.song_singer{
+  width: 26%;
+  float: left;
+  padding-left: 15px;
+}
+.song_time{
+  position: absolute;
+  top: 0;
+  right: 38px;
+}
+
+
+
+
 
 /* 自适应 */
 @media (max-width: 1300px) {
   .mod_player{
     margin: 0 6%;
+  }
+  .mod_default_body{
+    margin-right: 320px;
   }
 }

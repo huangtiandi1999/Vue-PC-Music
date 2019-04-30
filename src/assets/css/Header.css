@@ -334,6 +334,93 @@
   border: 1px solid #f2f2f2;
   font-size: 13px;
 }
+.user_data{
+  /* display:table 的块状元素不会继承父元素的宽度 而block默认继承父元素的宽度100% */
+  display: table;
+  height: 84px;
+  overflow: hidden;
+  text-align: left;
+  padding: 25px 20px 0;
+}
+.user_img_link{
+  /* 浮动的父元素可以继承浮动子元素的高度和宽度 */
+  float: left;
+  position: relative;
+}
+.user_data_cover_img{
+  width: 70px;
+  height: 70px;
+  float: left;
+  display: block;
+  border-radius: 100%;
+  margin-right: 10px;
+}
+.user_data_account{
+  /* 自动垂直居中 */
+  display: table-cell;
+  vertical-align: middle;
+}
+.user_data_account_name{
+  padding: 0 0 7px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.user_service_lv{
+  margin-bottom: 6px;
+  white-space: nowrap;
+}
+.user_service_lv img{
+  margin-top: -7px;
+}
+.service_toolbar{
+  padding: 13px 20px 6px 20px;
+  font-size: 15px;
+}
+.service_toolbar_item{
+  position: relative;
+  margin-bottom: 16px;
+}
+.toolbar_item_title a{
+  display: inline-block;
+  line-height: 22px;
+}
+.toolbar_item_des{
+  font-size: 12px;
+  height: 17px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 85%;
+  color: #999;
+}
+.subscribe_ser_btn{
+  position: absolute;
+  top: 5px;
+  right: 0;
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 14px;
+  border-radius: 2px;
+  height: 30px;
+  line-height: 30px;
+  width: 70px;
+  padding: 0;
+  text-align: center;
+  border: 1px solid #31c27c;
+  background-color: #31c27c;
+  color: #fff;
+}
+.subscribe_ser_btn:hover{
+  background-color: #2caf6f;
+  border-color: #2caf6f;
+  color: #fff;
+}
+
+
+
 
 
 

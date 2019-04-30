@@ -75,6 +75,12 @@ img{
 .music_icon{
   background-image: url("../images/icon_sprite.png");
 }
+.play_icon{
+  background-image: url("../images/icon_sprite@2x.png");
+  margin-right: 6px;
+  display: inline-block;
+  background-repeat: no-repeat;
+}
 .ab_icon{
   position: absolute;
   height: 16px;
@@ -189,6 +195,7 @@ img{
   height: 100%;
   width: 100%;
 }
+
 
 @media (max-width: 1240px) {
   .index_inner{

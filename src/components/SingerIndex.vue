@@ -97,7 +97,8 @@
             })
         },
         playSong(song,singer){
-          this.$router.push({name:'player',query:{singer,song}})
+          this.$store.dispatch('SetNowPlay',{song,singer});
+          this.$router.push({name:'player'});
         }
       }
     }

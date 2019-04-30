@@ -15,7 +15,30 @@
       <!-- 主体内容 -->
       <div class="mod_player">
         <div class="mod_player_body">
+          <!-- 默认模式 使用左边2个右边一个div的布局方式 -->
+          <div class="mod_default_body">
+            <ToolBar></ToolBar>
+            <div class="mod_default_view">
+              <div class="mod_songlist_area">
+                <!-- 顶端分割线 -->
+                <i class="play_line"></i>
+                <ul class="mod_songlist_header">
+                  <li class=""><!-- 这个li元素用来全选 暂时先不管 --></li>
+                  <li class="song_name">歌曲</li>
+                  <li class="song_singer">歌手</li>
+                  <li class="song_time">时长</li>
+                </ul>
+                <!-- 分割线 -->
+                <i class="play_line"></i>
+                <ul>
 
+                </ul>
+              </div>
+            </div>
+            <div class="mod_default_songinfo"></div>
+          </div>
+          <!-- 纯净模式 -->
+          <div></div>
         </div>
         <div class="mod_player_footer">
 
@@ -26,18 +49,21 @@
 </template>
 
 <script>
+  import ToolBar from './PlayerComponents/PlayToolbar'
     export default {
        name: "player",
+       components:{
+         ToolBar
+       },
        data() {
          return {
            songName: this.$route.query.song,
-           singerName: this.$route.query.singer,
-           timer:''
+           singerName: this.$route.query.singer
          }
        },
        created() {
-          document.title = this.$route.query.song + "-" + this.$route.query.singer + "..." + "正在播放" + " ";
-          this.timer=setInterval(function () {
+          let token=setTimeout(function () {
+            document.title = this.$store.getters.NowPlay.song + "-" + this.$store.getters.NowPlay.singer + "..." + "正在播放" + " ";
             var text = document.title;
             document.title = text.substring(1,text.length) + text.substring(0,1);
           },700)
