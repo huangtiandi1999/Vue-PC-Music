@@ -24,7 +24,7 @@
                       <a href="javascript:;">{{item.name}}</a>
                     </span>
                     <div class="tool_nav_menu">
-                      <a href="javascript:;" class="tool_menu_item tool_play" title="播放" @click="playSong(item.name,singerName)"><i class="play_icon song_menu_icon"></i></a>
+                      <a href="javascript:;" class="tool_menu_item tool_play" title="播放" @click="playSong(item.name,singerName)"><i class="player_icon song_menu_icon"></i></a>
                       <a href="javascript:;" class="tool_menu_item tool_add" title="添加到歌单"><i class="add_icon song_menu_icon"></i></a>
                       <a href="javascript:;" class="tool_menu_item tool_download" title="下载"><i class="download_icon song_menu_icon"></i></a>
                       <a href="javascript:;" class="tool_menu_item tool_share" title="分享"><i class="share_icon song_menu_icon"></i></a>
@@ -97,7 +97,12 @@
             })
         },
         playSong(song,singer){
+          let info = this.singerInformation.music_inf.songName.find(value => value.name==song);
+          info.singer = singer;
           this.$store.dispatch('SetNowPlay',{song,singer});
+          // 将当前单击歌曲加入播放队列
+          this.$store.dispatch('AddSongToList',info);
+
           this.$router.push({name:'player'});
         }
       }

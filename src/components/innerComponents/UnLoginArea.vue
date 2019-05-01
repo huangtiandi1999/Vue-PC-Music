@@ -27,7 +27,8 @@
 <script>
   import axios from 'axios'
   import '@/mock/mock.js'
-    export default {
+  import {setCookie,getCookie} from "../../cookie/cookie";
+  export default {
       name: "UnLoginArea",
       data(){
         return {
@@ -49,8 +50,8 @@
                 type: 'success',
                 duration:2000
               });
-              // 保存用户信息到状态管理vuex
-              this.$store.dispatch('SetUser',user);
+              // 保存用户信息到状态管理vuex 并且使用sessionStorage储存用户信息防止f5刷新时数据丢失
+              this.$store.commit('setUser',user)
               // 关闭登录模态框
               this.centerDialogVisible=false;
               // 更改header组件中登录状态
@@ -68,7 +69,7 @@
             })
         }
       }
-    }
+  }
 </script>
 
 <style scoped>

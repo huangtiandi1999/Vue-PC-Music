@@ -195,7 +195,18 @@ img{
   height: 100%;
   width: 100%;
 }
-
+.player_icon{
+  background-position: 0 0;
+}
+.add_icon{
+  background-position: 0 -80px;
+}
+.download_icon{
+  background-position: 0 -120px;
+}
+.share_icon{
+  background-position: 0 -40px;
+}
 
 @media (max-width: 1240px) {
   .index_inner{

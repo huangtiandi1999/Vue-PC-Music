@@ -74,6 +74,12 @@
   position: relative;
   z-index: 3;
 }
+.mod_player a{
+  color: rgba(225,225,225,.8);
+}
+.mod_player a:hover{
+  color: #fff;
+}
 .mod_player_body{
   position: absolute;
   top: 11%;
@@ -178,9 +184,89 @@ i.play_line{
 .song_time{
   position: absolute;
   top: 0;
+  width: 50px;
   right: 38px;
 }
 
+/* 列表区域 */
+.mod_songlist_item{
+  padding-left: 62px;
+  padding-right: 95px;
+  font-size: 0;
+  overflow: hidden;
+  position: relative;
+}
+.mod_songlist_index,
+.mod_songlist_songname,
+.mod_songlist_singername,
+.mod_songlist_time{
+  height: 50px;
+  line-height: 50px;
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.mod_songlist_index{
+  position: absolute;
+  top: 0;
+  left: 16px;
+  text-align: right;
+  color: inherit;
+  width: 36px;
+}
+.mod_songlist_songname{
+  width: 68%;
+  float: left;
+  position: relative;
+  white-space: normal;
+}
+.mod_songlist_singername{
+  float: left;
+  width: 26%;
+  color: inherit;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+.mod_songlist_time{
+  position: absolute;
+  top: 0;
+  right: 38px;
+  width: 50px;
+}
+.mod_list_menu{
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  font-size: 0;
+  height: 36px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.mod_songlist_item:hover .mod_list_menu{
+  opacity: 1;
+  pointer-events: inherit;
+  right: 10px;
+  margin-top: -18px;
+}
+.mod_list_menu a{
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: top;
+}
+.mod_list_menu a:hover .player_icon{
+  background-position: -120px 0;
+}
+.mod_list_menu a:hover .add_icon{
+  background-position: -120px -80px;
+}
+.mod_list_menu a:hover .download_icon{
+  background-position: -120px -120px;
+}
+.mod_list_menu a:hover .share_icon{
+  background-position: -120px -40px;
+}
 
 
 
@@ -192,5 +278,10 @@ i.play_line{
   }
   .mod_default_body{
     margin-right: 320px;
+  }
+}
+@media (max-width: 1240px) {
+  .mod_list_menu a{
+    margin-right: 5px;
   }
 }

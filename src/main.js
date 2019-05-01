@@ -46,8 +46,9 @@ axios.get("../static/data.json")
       Singers:singers,
       Music:music,
       Login:false,
-      user:null,
+      user:JSON.parse(window.sessionStorage.getItem('user')),
       nowPlay:null,
+      playListSong:[],
     }
     const getters={
       isShow(state) {
@@ -61,6 +62,9 @@ axios.get("../static/data.json")
       },
       NowPlay(state){
         return state.nowPlay;
+      },
+      ListSong(state){
+        return state.playListSong;
       }
     }
     const mutations={
@@ -78,9 +82,14 @@ axios.get("../static/data.json")
       },
       setUser(state,user){
         state.user=user;
+        // 将用户信息保存到当前回话
+        window.sessionStorage.setItem('user',JSON.stringify(user));
       },
       setNowPlay(state,songinfo){
         state.nowPlay=songinfo;
+      },
+      AddSong(state,songinfo){
+        state.playListSong.push(songinfo);
       }
     }
     const actions={
@@ -101,6 +110,9 @@ axios.get("../static/data.json")
       },
       SetNowPlay(context,songinfo){
         context.commit('setNowPlay',songinfo);
+      },
+      AddSongToList(context,songinfo){
+        context.commit('AddSong',songinfo);
       }
     }
     const store=new Vuex.Store({

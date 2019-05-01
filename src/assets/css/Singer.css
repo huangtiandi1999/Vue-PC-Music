@@ -216,6 +216,7 @@
 .tool_menu_item{
   margin-right: 5px;
   display: inline-block;
+  width: 36px;
   vertical-align: top;
 }
 .dujia_icon{
@@ -236,19 +237,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.play_icon{
-  background-position: 0 0;
-}
-.add_icon{
-  background-position: 0 -80px;
-}
-.download_icon{
-  background-position: 0 -120px;
-}
-.share_icon{
-  background-position: 0 -40px;
-}
-.tool_menu_item:hover .play_icon{
+.tool_menu_item:hover .player_icon{
   background-position: -40px 0;
 }
 .tool_menu_item:hover .add_icon{

@@ -61,6 +61,7 @@
         //   更新vuex中用户状态
           this.$store.dispatch('loginOutMusic');
           this.$store.dispatch('SetUser',null);
+          window.sessionStorage.removeItem('user');
           console.log("退出成功");
         }
       },

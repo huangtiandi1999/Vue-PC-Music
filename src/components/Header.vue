@@ -39,7 +39,7 @@
       },
       computed:{
         CurrentComponent(){
-          return this.$store.getters.isLogin ? "LoginAfter" : "UnLoginArea";
+          return !!(this.$store.getters.User) ? "LoginAfter" : "UnLoginArea";
         }
       }
     }

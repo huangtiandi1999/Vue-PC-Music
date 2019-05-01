@@ -31,7 +31,24 @@
                 <!-- 分割线 -->
                 <i class="play_line"></i>
                 <ul>
-
+                  <li v-for="(item,index) of songlist">
+                    <div class="mod_songlist_item">
+                      <div class="mod_songlist_index">{{index+1}}</div>
+                      <div class="mod_songlist_songname">
+                        <span :title="item.name">{{item.name}}</span>
+                        <div class="mod_list_menu">
+                          <a title="播放" href="javascript:;"><i class="song_menu_icon player_icon"></i></a>
+                          <a title="添加到歌单" href="javacript:;"><i class="song_menu_icon add_icon"></i></a>
+                          <!-- 下载按钮 暂时先展示 可以在数据中绝对是否可以下载 -->
+                          <a title="下载" href="javascript:;" v-show="true"><i class="song_menu_icon download_icon"></i></a>
+                          <a title="分享" href="javascript:;"><i class="song_menu_icon share_icon"></i></a>
+                        </div>
+                      </div>
+                      <div class="mod_songlist_singername"><a href="javascript:;">{{item.singer}}</a></div>
+                      <div class="mod_songlist_time">NAN</div>
+                      <i class="play_line"></i>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -57,13 +74,24 @@
        },
        data() {
          return {
-           songName: this.$route.query.song,
-           singerName: this.$route.query.singer
+
+         }
+       },
+       computed:{
+         songlist(){
+           let arr = [], obj = {};
+           // 对象数组去重 防止试听列表中出现重复的歌曲
+           arr = this.$store.getters.ListSong.reduce((item,next) => {
+             obj[next.name] ? "" : obj[next.name]=true && item.push(next);
+             return item;
+           },[]);
+           return arr;
          }
        },
        created() {
+         let self=this;
           let token=setTimeout(function () {
-            document.title = this.$store.getters.NowPlay.song + "-" + this.$store.getters.NowPlay.singer + "..." + "正在播放" + " ";
+            document.title = self.$store.getters.NowPlay.song + "-" + self.$store.getters.NowPlay.singer + "..." + "正在播放" + " ";
             var text = document.title;
             document.title = text.substring(1,text.length) + text.substring(0,1);
           },700)
