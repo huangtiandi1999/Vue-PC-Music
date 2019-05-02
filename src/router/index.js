@@ -4,7 +4,7 @@ import Home from '../components/Home'
 import Singerlist from '../components/Singerlist'
 import Singer from '../components/SingerIndex'
 import player from '../components/player'
-
+import Playlist from '../components/Playlist'
 Vue.use(Router)
 
 export default new Router({
@@ -22,6 +22,11 @@ export default new Router({
       components:{
         default:Singerlist
       }
+    },
+    {
+      path:'/playlist',
+      name:'Playlist',
+      component:Playlist
     },
     {
       path:'/singer/:sn',

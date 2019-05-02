@@ -10,10 +10,36 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    // 配置跨域代理方案
+    proxyTable: {
+      '/api': {
+        // 由于请求的是不同源json文件 即本地开发地址无法请求到qq音乐的服务器地址
+        // 于是我们添加一层代理 设置target，来请求接口
+        // 意思就是如果我们的请求首字段包括api，那么就在本地浏览器创建一个服务器来请求目标服务器，再设置changeOrigin跨域
+        // 请求的时候会用target替代掉本地地址 因此就不存在跨域限制，而且使用axios调用get请求时接口路径必须以/api开头
+        // 最终的路径就是 target/api/getList?参数   如果设置了pathRewrite如下 那么api会被消除
+        target: 'https://c.y.qq.com/',
+        secure: false,
+        changeOrigin: true,
+        pathRewrite:{
+          '^/api' : ''
+        },
+        headers: {
+          referer: 'https://c.y.qq.com'
+        }
+      },
+      '/a':{
+        target:'https://u.y.qq.com/',
+        secure:false,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/a':''
+        }
+      }
+    },
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
+    host: '10.100.120.174', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,

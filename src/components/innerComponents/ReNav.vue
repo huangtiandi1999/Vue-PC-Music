@@ -19,7 +19,7 @@
             {title:'歌手',name:'Singerlist'},
             {title:'专辑',name:''},
             {title:'排行榜',name:''},
-            {title:'分类歌单',name:''},
+            {title:'分类歌单',name:'Playlist'},
             {title:'电台',name:''},
             {title:'MV',name:''},
             {title:'数字专辑',name:''},
