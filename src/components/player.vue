@@ -37,7 +37,7 @@
                       <div class="mod_songlist_songname">
                         <span :title="item.name">{{item.name}}</span>
                         <div class="mod_list_menu">
-                          <a title="播放" href="javascript:;"><i class="song_menu_icon player_icon"></i></a>
+                          <a title="播放" href="javascript:;" @click="play(item)"><i class="song_menu_icon player_icon"></i></a>
                           <a title="添加到歌单" href="javacript:;"><i class="song_menu_icon add_icon"></i></a>
                           <!-- 下载按钮 暂时先展示 可以在数据中绝对是否可以下载 -->
                           <a title="下载" href="javascript:;" v-show="true"><i class="song_menu_icon download_icon"></i></a>
@@ -46,19 +46,38 @@
                       </div>
                       <div class="mod_songlist_singername"><a href="javascript:;">{{item.singer}}</a></div>
                       <div class="mod_songlist_time">NAN</div>
-                      <i class="play_line"></i>
+                      <i class="play_line sec"></i>
                     </div>
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="mod_default_songinfo"></div>
+            <div class="mod_default_songinfo" v-if="playsong">
+              <div class="mod_default_songinfo_top">
+                <a class="playing_song_img" href="javascript:;">
+                  <img :src="playsong.photo">
+                </a>
+                <div class="playing_songname">
+                  歌曲名：<a href="javacript:;">{{playsong.name}}</a>
+                </div>
+                <div class="playing_singer">
+                  歌手名：<a href="javascript:;">{{playsong.singer}}</a>
+                </div>
+                <div class="playing_album">
+                  专辑名：<a href="javascript:;">{{playsong.album}}</a>
+                </div>
+              </div>
+              <!-- 歌词部分 目前数据中未存储歌词 -->
+              <div></div>
+            </div>
           </div>
           <!-- 纯净模式 -->
           <div></div>
         </div>
         <div class="mod_player_footer">
+          <audio autoplay controls id="audio" :src="playurl">
 
+          </audio>
         </div>
       </div>
       <div class="player_cover_mask"></div>
@@ -66,6 +85,7 @@
 </template>
 
 <script>
+  import {getMusicJson} from "../api/recommend";
   import ToolBar from './PlayerComponents/PlayToolbar'
     export default {
        name: "player",
@@ -74,7 +94,8 @@
        },
        data() {
          return {
-
+           playurl:'',
+           playsong:null,
          }
        },
        computed:{
@@ -88,8 +109,23 @@
            return arr;
          }
        },
+       methods:{
+         play(item){
+           if(item.singer == "周杰伦"){
+             this.$message({
+               type:'info',
+               message:'很遗憾！周董的歌无法获取到播放源地址，换一首试试 ┑(￣Д ￣)┍',
+               duration:4000
+             });
+           }else{
+             this.playurl = item.url;
+             this.playsong = item;
+           }
+         }
+       },
        created() {
          let self=this;
+          // 将setTimeout改成setInterval 有标题滚动效果
           let token=setTimeout(function () {
             document.title = self.$store.getters.NowPlay.song + "-" + self.$store.getters.NowPlay.singer + "..." + "正在播放" + " ";
             var text = document.title;

@@ -267,7 +267,64 @@ i.play_line{
 .mod_list_menu a:hover .share_icon{
   background-position: -120px -40px;
 }
+.sec{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.mod_default_songinfo{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 340px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 24px;
+}
+.playing_song_img{
+  position: relative;
+  display: block;
+  width: 186px;
+  height: 186px;
+  margin: auto;
+}
+.playing_song_img:after{
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 0;
+  width: 201px;
+  height: 180px;
+  background: url("../images/album_cover_player.png") 0 0 no-repeat;
+}
+.playing_song_img img{
+  width: 186px;
+  height: 186px;
+  vertical-align: middle;
+}
+.playing_songname,.playing_singer,.playing_album{
+  white-space: normal;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 28px;
+}
+.playing_songname{
+  margin-top: 15px;
+}
 
+
+
+
+
+
+.mod_player_footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 11%;
+}
 
 
 
@@ -278,6 +335,9 @@ i.play_line{
   }
   .mod_default_body{
     margin-right: 320px;
+  }
+  .mod_default_songinfo{
+    width: 300px;
   }
 }
 @media (max-width: 1240px) {

@@ -42,6 +42,7 @@
 </template>
 
 <script>
+  import {getMusicJson} from "../api/recommend";
   import SingerInfo from './SingerComponents/SingerInfo'
     export default {
       name: "SingerIndex",
@@ -99,11 +100,21 @@
         playSong(song,singer){
           let info = this.singerInformation.music_inf.songName.find(value => value.name==song);
           info.singer = singer;
-          this.$store.dispatch('SetNowPlay',{song,singer});
-          // 将当前单击歌曲加入播放队列
-          this.$store.dispatch('AddSongToList',info);
+          // 获取该歌曲的vkey值组成url 跨域播放
+          getMusicJson(info.songmid)
+            .then(res => {
+              // 拼接远程播放源地址
+              const domain = res.data.req.data.freeflowsip[0];
+              const query = res.data.req_0.data.midurlinfo[0].purl;
+              const url = domain + query;
+              // 将地址存入info
+              info.url = url;
+              this.$store.dispatch('SetNowPlay',{song,singer});
+              // 将当前单击歌曲加入播放队列
+              this.$store.dispatch('AddSongToList',info);
 
-          this.$router.push({name:'player'});
+              this.$router.push({name:'player'});
+            })
         }
       }
     }

@@ -38,3 +38,22 @@ export function getSingerList() {
   })
 }
 
+export function getMusicJson(songmid) {
+  const url = '/b/cgi-bin/musicu.fcg';
+  const data = Object.assign({},{
+    g_tk:905549040,
+    hostUin: 0,
+    format:'json',
+    inCharset:'utf8',
+    outCharset:'utf-8',
+    notice:0,
+    platform: 'yqq.json',
+    data: {"req":{"module":"CDN.SrfCdnDispatchServer","method":"GetCdnDispatch","param":{"guid":"5611510712","calltype":0,"userip":""}},"req_0":{"module":"vkey.GetVkeyServer","method":"CgiGetVkey","param":{"guid":"5611510712","songmid":[songmid],"songtype":[0],"uin":"1491433427","loginflag":1,"platform":"20"}},"comm":{"uin":1491433427,"format":"json","ct":24,"cv":0}}
+  });
+
+  return axios.get(url,{params:data})
+    .then(res=>{
+      return Promise.resolve(res);
+    })
+}
+

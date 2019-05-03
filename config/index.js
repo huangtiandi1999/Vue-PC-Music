@@ -35,6 +35,14 @@ module.exports = {
         pathRewrite: {
           '^/a':''
         }
+      },
+      '/b':{
+        target:'https://u.y.qq.com/',
+        changeOrigin:true,
+        secure:false,
+        pathRewrite:{
+          '^/b':''
+        }
       }
     },
 
