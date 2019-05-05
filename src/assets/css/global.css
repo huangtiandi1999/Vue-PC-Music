@@ -198,6 +198,9 @@ img{
 .player_icon{
   background-position: 0 0;
 }
+.pause_icon{
+  background-position: -80px -200px;
+}
 .add_icon{
   background-position: 0 -80px;
 }
@@ -207,6 +210,16 @@ img{
 .share_icon{
   background-position: 0 -40px;
 }
+
+.control_icon{
+  background: url("../images/player.png");
+  position: absolute;
+  opacity: .8;
+}
+.control_icon:hover{
+  opacity: 1;
+}
+
 
 @media (max-width: 1240px) {
   .index_inner{

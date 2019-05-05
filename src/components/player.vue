@@ -37,7 +37,7 @@
                       <div class="mod_songlist_songname">
                         <span :title="item.name">{{item.name}}</span>
                         <div class="mod_list_menu">
-                          <a title="播放" href="javascript:;" @click="play(item)"><i class="song_menu_icon player_icon"></i></a>
+                          <a title="播放" href="javascript:;" @click="play(item,index)"><i class="song_menu_icon" :class="{'player_icon':!isplaying,'pause_icon':isplaying && playsongindex==index}"></i></a>
                           <a title="添加到歌单" href="javacript:;"><i class="song_menu_icon add_icon"></i></a>
                           <!-- 下载按钮 暂时先展示 可以在数据中绝对是否可以下载 -->
                           <a title="下载" href="javascript:;" v-show="true"><i class="song_menu_icon download_icon"></i></a>
@@ -75,12 +75,20 @@
           <div></div>
         </div>
         <div class="mod_player_footer">
-          <audio autoplay controls id="audio" :src="playurl">
+          <!-- 一组播放控件 -->
+          <a href="javascript:;" title="alt+←" class="control_icon previous_music_icon" @click="playprevious"><span></span></a>
+          <a href="javascript:;" class="control_icon play_music_icon" :class="{'play_state_pause':isplaying}" @click="controlplay"><span></span></a>
+          <a href="javascript:;" title="alt+→" class="control_icon next_music_icon" @click="playnext"><span></span></a>
+          <div class="">
 
-          </audio>
+          </div>
+
         </div>
       </div>
       <div class="player_cover_mask"></div>
+      <audio autoplay="false" id="audio" :src="playurl">
+
+      </audio>
     </div>
 </template>
 
@@ -96,6 +104,9 @@
          return {
            playurl:'',
            playsong:null,
+           playsongindex:-1,
+           isplaying:false,
+           isMounted:false
          }
        },
        computed:{
@@ -110,7 +121,8 @@
          }
        },
        methods:{
-         play(item){
+         play(item,index){
+           let a = document.getElementById('audio');
            if(item.singer == "周杰伦"){
              this.$message({
                type:'info',
@@ -120,7 +132,45 @@
            }else{
              this.playurl = item.url;
              this.playsong = item;
+             if(a.paused){
+               this.isplaying=true;
+               this.playsongindex = index;
+               a.play();
+             }else if(!a.paused && this.playsongindex!=index){
+               this.isplaying = true;
+               this.playsongindex = index;
+               a.play();
+             }else{
+               this.isplaying = false;
+               a.pause();
+             }
            }
+         },
+         controlplay(){
+           let audio = document.getElementById('audio');
+           if(audio.paused){
+             audio.play();
+             this.isplaying = true;
+           }else{
+             audio.pause();
+             this.isplaying = false;
+           }
+         },
+         playprevious(){
+           let nowplayqueue = this.songlist;
+           let len = nowplayqueue.length;
+           // 更新播放歌曲url
+           this.playurl = this.playsongindex == 0 ? nowplayqueue[len-1].url : nowplayqueue[this.playsongindex-1].url;
+           // 更新播放歌曲的index
+           this.playsongindex = !!this.playsongindex ? this.playsongindex-1 : len-1;
+           this.isplaying = true;
+         },
+         playnext(){
+           let nowplayqueue = this.songlist;
+           let len = nowplayqueue.length;
+           this.playurl = this.playsongindex ==len-1 ? nowplayqueue[0].url : nowplayqueue[this.playsongindex+1].url;
+           this.playsongindex = this.playsongindex==len-1 ? 0 : this.playsongindex+1;
+           this.isplaying = true;
          }
        },
        created() {
