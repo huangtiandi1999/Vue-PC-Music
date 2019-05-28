@@ -13,7 +13,7 @@
         <a href="javascript:;" class="play_set_btn"><span class="play_set_text">设置</span></a>
       </div>
       <!-- 主体内容 -->
-      <div class="mod_player">
+      <div class="mod_player" ref="rela">
         <div class="mod_player_body">
           <!-- 默认模式 使用左边2个右边一个div的布局方式 -->
           <div class="mod_default_body">
@@ -39,7 +39,7 @@
                         <div class="mod_list_menu">
                           <a title="播放" href="javascript:;" @click="play(item,index)"><i class="song_menu_icon" :class="{'player_icon':!isplaying,'pause_icon':isplaying && playsongindex==index}"></i></a>
                           <a title="添加到歌单" href="javacript:;"><i class="song_menu_icon add_icon"></i></a>
-                          <!-- 下载按钮 暂时先展示 可以在数据中绝对是否可以下载 -->
+                          <!-- 下载按钮 暂时先展示 可以在数据中决定是否可以下载 -->
                           <a title="下载" href="javascript:;" v-show="true"><i class="song_menu_icon download_icon"></i></a>
                           <a title="分享" href="javascript:;"><i class="song_menu_icon share_icon"></i></a>
                         </div>
@@ -74,19 +74,32 @@
           <!-- 纯净模式 -->
           <div></div>
         </div>
-        <div class="mod_player_footer">
+        <div class="mod_player_footer" v-if="playsong">
           <!-- 一组播放控件 -->
           <a href="javascript:;" title="alt+←" class="control_icon previous_music_icon" @click="playprevious"><span></span></a>
           <a href="javascript:;" class="control_icon play_music_icon" :class="{'play_state_pause':isplaying}" @click="controlplay"><span></span></a>
           <a href="javascript:;" title="alt+→" class="control_icon next_music_icon" @click="playnext"><span></span></a>
-          <div class="">
-
+          <div ref="k" class="play_bar">
+            <div class="playing_song_info">
+              <a href="javascript:;" :title="playsong.name">{{playsong.name}}</a>
+              -
+              <a href="javascript:;" :title="playsong.singer">{{playsong.singer}}</a>
+            </div>
+            <div class="playing_song_progress" @click="handleTick">
+              <div class="progress_inner">
+                <div id="all_length" class="progress_load_length"></div>
+                <!-- 当前已经播放长度 -->
+                <div id="b" class="progress_playing_length">
+                  <i id="c" @mousedown="handleStartMove" @mousemove="handleMove" @mouseup="handleEndMove" class="control_icon play_bar_dot"></i>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
       </div>
       <div class="player_cover_mask"></div>
-      <audio autoplay="false" id="audio" :src="playurl">
+      <audio @canplay="sos" autoplay="false" id="audio" :src="playurl">
 
       </audio>
     </div>
@@ -106,7 +119,12 @@
            playsong:null,
            playsongindex:-1,
            isplaying:false,
-           isMounted:false
+           isMounted:false,
+           max:0,
+           percentage:0,
+           alltime:0,
+           currentTime:0,
+           progressInit:false,
          }
        },
        computed:{
@@ -133,14 +151,17 @@
              this.playurl = item.url;
              this.playsong = item;
              if(a.paused){
+               // 如果当前歌曲处于暂停 并且点击其他歌曲播放按钮 那么将当前单击播放按钮改变样式并且播放
                this.isplaying=true;
                this.playsongindex = index;
                a.play();
              }else if(!a.paused && this.playsongindex!=index){
+               // 如果歌曲处于播放状态 单击其他歌曲 那么同上
                this.isplaying = true;
                this.playsongindex = index;
                a.play();
              }else{
+               // 否则停止播放
                this.isplaying = false;
                a.pause();
              }
@@ -171,16 +192,68 @@
            this.playurl = this.playsongindex ==len-1 ? nowplayqueue[0].url : nowplayqueue[this.playsongindex+1].url;
            this.playsongindex = this.playsongindex==len-1 ? 0 : this.playsongindex+1;
            this.isplaying = true;
+         },
+         formatTime(time){
+           let m = Math.floor(time/60);
+           let s = Math.floor((time - m*60));
+           if(m < 10)
+             m = `0${m}`;
+           if(s<10)
+             s = `0${s}`;
+           return `${m}:${s}`;
+         },
+         updateProgress(x){
+           let a = this.$refs.k,
+             rela = this.$refs.rela,
+             b = document.getElementById('b'),
+             media = document.getElementById('audio'),
+             self = this;
+           let marleft = parseInt(self.myWindow.getComputedStyle(rela).marginLeft,10)
+           self.max = a.clientWidth;
+           let offsetleft = a.offsetLeft+marleft;
+           let position = x - offsetleft > self.max ? self.max : x-offsetleft;
+           self.percentage = Number(position/self.max * 100).toFixed() + '%';
+           if(position < 0){
+               self.percentage = 0;
+               position = 0;
+           }
+           b.style.width = self.percentage;
+           self.currentTime = media.currentTime = media.duration * Number(position/self.max);
+         },
+         sos(){
+           this.max = this.$refs.k.clientWidth;
+         },
+         handleTick(e){
+           this.updateProgress(e.pageX);
+         },
+         handleStartMove(e){
+           this.progressInit = true;
+           this.updateProgress(e.pageX);
+         },
+         handleMove(e){
+           if(this.progressInit){
+             this.updateProgress(e.pageX);
+           }
+         },
+         handleEndMove(e){
+           if(this.progressInit){
+             this.progressInit = false;
+             updateProgress(e.pageX);
+           }
          }
        },
        created() {
          let self=this;
+         let a = self.$refs.k;
           // 将setTimeout改成setInterval 有标题滚动效果
-          let token=setTimeout(function () {
-            document.title = self.$store.getters.NowPlay.song + "-" + self.$store.getters.NowPlay.singer + "..." + "正在播放" + " ";
-            var text = document.title;
-            document.title = text.substring(1,text.length) + text.substring(0,1);
-          },700)
+          // let token=setTimeout(function () {
+          //   document.title = self.$store.getters.NowPlay.song + "-" + self.$store.getters.NowPlay.singer + "..." + "正在播放" + " ";
+          //   var text = document.title;
+          //   document.title = text.substring(1,text.length) + text.substring(0,1);
+          // },700);
+          self.myWindow.addEventListener('resize',function (e) {
+            self.max = a.clientWidth;
+          });
         },
         //设置导航守卫
         beforeRouteEnter(to, from, next) {

@@ -19,7 +19,7 @@ Vue.use(CarouselItem);
 Vue.use(Vuex);
 
 Vue.prototype.$message = Message;
-
+Vue.prototype.myWindow = window;
 /* eslint-disable no-new */
 var songList={}
 var singers=[]

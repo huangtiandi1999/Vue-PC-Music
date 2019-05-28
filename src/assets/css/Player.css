@@ -316,8 +316,6 @@ i.play_line{
   margin-top: 15px;
 }
 
-
-
 .mod_player_footer{
   position: absolute;
   bottom: 0;
@@ -349,6 +347,50 @@ i.play_line{
 .play_state_pause{
   background-position: -30px 0;
 }
+/* 播放条 */
+.play_bar{
+  position: relative;
+  margin: 0 448px 0 208px;
+}
+.playing_song_info{
+  padding-right: 90px;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+}
+.playing_song_progress{
+  padding-top: 6px;
+  height: 8px;
+  cursor: pointer;
+
+}
+.progress_inner{
+  position: relative;
+  height: 2px;
+  background-color: rgba(255,255,255,.1);
+}
+.progress_load_length{
+  height: 2px;
+  background-color: rgba(255,255,255,.2);
+}
+.progress_playing_length{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background-color: rgba(255,255,255,.7);
+}
+.play_bar_dot{
+  top: -4px;
+  right: -4px;
+  width: 10px;
+  height: 10px;
+  background-position: 0 -170px;
+  opacity: 1;
+  filter: none;
+}
+
+
 
 
 
