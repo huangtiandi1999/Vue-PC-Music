@@ -211,6 +211,7 @@ img{
   background-position: 0 -40px;
 }
 
+/* 播放页的底层控制按钮 */
 .control_icon{
   background: url("../images/player.png");
   position: absolute;

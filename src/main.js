@@ -49,6 +49,7 @@ axios.get("../static/data.json")
       user:JSON.parse(window.sessionStorage.getItem('user')),
       nowPlay:null,
       playListSong:[],
+
     }
     const getters={
       isShow(state) {
@@ -65,7 +66,8 @@ axios.get("../static/data.json")
       },
       ListSong(state){
         return state.playListSong;
-      }
+      },
+
     }
     const mutations={
       hide(state){

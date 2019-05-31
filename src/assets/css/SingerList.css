@@ -54,4 +54,108 @@
   transition-property: opacity;
   transition-duration: .3s;
 }
+.main{
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.singer_filter_wrap{
+  padding: 34px 0 17px 40px;
+  margin: 30px 0 20px;
+  background-color: #fbfbfb;
+}
+.singer_filter_tag{
+  padding-bottom: 3px;
+  height: auto;
+  overflow: hidden;
+}
+.singer_tag_item{
+  height: 26px;
+  margin: 0 12px 14px 0;
+  padding: 0 8px;
+  line-height: 27px;
+  overflow: hidden;
+  float: left;
+}
+.tag_item_selected{
+  background-color: #31c27c;
+  color: #fff;
+}
+.tag_item_selected:hover{
+  color: #fff;
+}
+.tag_item_all{
+  margin-right: 28px;
+}
+.topten_singer_wrap{
+  text-align: center;
+}
+.topten_singer_list{
+  margin-bottom: 4px;
+  margin-right: -20px;
+  /* 清楚浮动 */
+  overflow: hidden;
+}
+.topten_singer_list_item{
+  float: left;
+  margin-bottom: 20px;
+  overflow: hidden;
+  width: 20%;
+}
+.topten_singer_item_inner{
+  position: relative;
+  padding: 25px 0;
+  margin-right: 20px;
+  background-color: #fbfbfb;
+  overflow: hidden;
+  min-height: 195px;
+}
+.topten_singer_item_inner>a{
+  margin-right: auto;
+  margin-left: auto;
+}
+.singer_list_pic,.singer_list_apic{
+  display: block;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+}
+.singer_list_title{
+  font-size: 16px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 20px 30px 4px 30px;
+}
+.singer_list_ul{
+  margin: 0 -20px 20px 0;
+  overflow: hidden;
+}
+.singer_list_text_item{
+  float: left;
+  width: 20%;
+}
+.singer_list_text_link{
+  float: left;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  line-height: 36px;
+}
+
+
+
+
+
+
+/* 自适应 */
+@media (max-width: 1240px) {
+  .main{
+    min-width: 900px;
+    margin: 0 50px;
+  }
+}
 

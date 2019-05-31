@@ -389,6 +389,31 @@ i.play_line{
   opacity: 1;
   filter: none;
 }
+.playing_song_time{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.player_voice{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  padding-top: 13px;
+
+}
+.close_voice_icon{
+  top: 4px;
+  left: -33px;
+  width: 26px;
+  height: 21px;
+}
+.has_voice{
+  background-position: 0 -144px;
+}
+.no_voice{
+  background-position: 0 -182px;
+}
 
 
 

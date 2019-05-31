@@ -59,10 +59,6 @@
           return this.$route.params.sn;
         }
       },
-      created() {
-        this.FilterSingerData();
-        document.title=this.$route.params.sn+" - Music-千万正版音乐海量无损曲库新歌热歌天天畅听的高品质音乐平台！"
-      },
       watch:{
         '$route':'FilterSingerData'
       },
@@ -77,8 +73,8 @@
           var promise=new Promise((resolve, reject) => {
             try {
               setTimeout(function () {
-                var music_inf=self.$store.state.Music.find(music => music.singerName == name)
-                var singer_inf=self.$store.state.Singers.find(singer => singer.name==name)
+                var music_inf=self.$store.state.Music.find(music => music.singerName == name);
+                var singer_inf=self.$store.state.Singers.find(singer => singer.name==name);
                 self.singerInformation={
                   music_inf,
                   singer_inf
@@ -115,6 +111,16 @@
 
               this.$router.push({name:'player'});
             })
+        }
+      },
+      created() {
+        // 处理两种不一样的路由
+        if(this.$route.params.sn){
+          this.FilterSingerData();
+          document.title=this.$route.params.sn+" - Music-千万正版音乐海量无损曲库新歌热歌天天畅听的高品质音乐平台！"
+        }else{
+          document.title=this.$route.query.singer+" - Music-千万正版音乐海量无损曲库新歌热歌天天畅听的高品质音乐平台！"
+          this.singerInformation = JSON.parse(this.myWindow.sessionStorage.getItem('singer'));
         }
       }
     }

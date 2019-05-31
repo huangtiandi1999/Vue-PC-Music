@@ -79,12 +79,14 @@
           <a href="javascript:;" title="alt+←" class="control_icon previous_music_icon" @click="playprevious"><span></span></a>
           <a href="javascript:;" class="control_icon play_music_icon" :class="{'play_state_pause':isplaying}" @click="controlplay"><span></span></a>
           <a href="javascript:;" title="alt+→" class="control_icon next_music_icon" @click="playnext"><span></span></a>
-          <div ref="k" class="play_bar">
+          <!-- 播放滚动条 -->
+          <div ref="k" id="k" class="play_bar">
             <div class="playing_song_info">
               <a href="javascript:;" :title="playsong.name">{{playsong.name}}</a>
               -
               <a href="javascript:;" :title="playsong.singer">{{playsong.singer}}</a>
             </div>
+            <div class="playing_song_time">{{currentT}} / {{AllT}}</div>
             <div class="playing_song_progress" @click="handleTick">
               <div class="progress_inner">
                 <div id="all_length" class="progress_load_length"></div>
@@ -95,18 +97,27 @@
               </div>
             </div>
           </div>
-
+          <!-- 声音控制区域 -->
+          <div ref="voff" class="playing_song_progress player_voice" @click="handleTickOfVoice">
+            <a href="javascript:;" class="control_icon close_voice_icon has_voice" :class="{'no_voice':isForbidden}" @click="closeVoice" title="关闭声音[M]"></a>
+            <div class="progress_inner" title="调节音量 [增大alt+↑][减小alt+↓]">
+              <div class="progress_load_length"></div>
+              <!-- 当前声音长度 -->
+              <div class="progress_playing_length" ref="vlnow" style="width: 50%">
+                <i class="control_icon play_bar_dot" @mousedown="handleStartVoiceMove" @mousemove="handleVoiceMove" @mouseup="handleVoiceMoveEnd"></i>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="player_cover_mask"></div>
-      <audio @canplay="sos" autoplay="false" id="audio" :src="playurl">
+      <audio @canplay="sos" @timeupdate="updateSomething" @ended="playingover" autoplay="false" id="audio" :src="playurl">
 
       </audio>
     </div>
 </template>
 
 <script>
-  import {getMusicJson} from "../api/recommend";
   import ToolBar from './PlayerComponents/PlayToolbar'
     export default {
        name: "player",
@@ -125,6 +136,11 @@
            alltime:0,
            currentTime:0,
            progressInit:false,
+           percentageOfVoice:'50%',
+           //声音大小默认为0.5
+           volume:0.5,
+           isForbidden:false,
+           progressVoiceInit:false,
          }
        },
        computed:{
@@ -136,6 +152,12 @@
              return item;
            },[]);
            return arr;
+         },
+         currentT(){
+           return this.formatTime(this.currentTime);
+         },
+         AllT(){
+           return this.formatTime(this.alltime);
          }
        },
        methods:{
@@ -184,6 +206,8 @@
            this.playurl = this.playsongindex == 0 ? nowplayqueue[len-1].url : nowplayqueue[this.playsongindex-1].url;
            // 更新播放歌曲的index
            this.playsongindex = !!this.playsongindex ? this.playsongindex-1 : len-1;
+           //更播放条处 歌曲信息
+           this.playsong = nowplayqueue[this.playsongindex];
            this.isplaying = true;
          },
          playnext(){
@@ -191,6 +215,8 @@
            let len = nowplayqueue.length;
            this.playurl = this.playsongindex ==len-1 ? nowplayqueue[0].url : nowplayqueue[this.playsongindex+1].url;
            this.playsongindex = this.playsongindex==len-1 ? 0 : this.playsongindex+1;
+           //更新播放条区域 当前播放歌曲信息
+           this.playsong = nowplayqueue[this.playsongindex];
            this.isplaying = true;
          },
          formatTime(time){
@@ -221,7 +247,22 @@
            self.currentTime = media.currentTime = media.duration * Number(position/self.max);
          },
          sos(){
-           this.max = this.$refs.k.clientWidth;
+           let media = document.getElementById('audio');
+           this.alltime = media.duration;
+           media.volume = 0.5;
+         },
+         //随着歌曲播放更新滚动条
+         updateSomething(){
+           let self = this,
+             b = document.getElementById('b'),
+             media = document.getElementById('audio');
+           self.currentTime = media.currentTime;
+           let a = self.currentTime/self.alltime;
+           b.style.width = (a*100).toFixed()+'%';
+         },
+         //播放结束 自动下一首
+         playingover(){
+           this.playnext();
          },
          handleTick(e){
            this.updateProgress(e.pageX);
@@ -238,22 +279,80 @@
          handleEndMove(e){
            if(this.progressInit){
              this.progressInit = false;
-             updateProgress(e.pageX);
+             this.updateProgress(e.pageX);
            }
+         },
+         handleStartVoiceMove(e){
+           this.progressVoiceInit = true;
+           this.updateVoiceProgress(e.pageX);
+         },
+         handleVoiceMove(e){
+           if(this.progressVoiceInit){
+             this.updateVoiceProgress(e.pageX);
+           }
+         },
+         handleVoiceMoveEnd(e){
+           if(this.progressVoiceInit){
+             this.progressVoiceInit = false;
+             this.updateVoiceProgress(e.pageX);
+           }
+         },
+         //音量调节滚动条
+         updateVoiceProgress(x){
+           let off = this.$refs.voff,
+             rela = this.$refs.rela,
+             self = this,
+             vlnow = this.$refs.vlnow,
+             media = document.getElementById('audio');
+           let offsetleft = off.offsetLeft;
+           let marleft = parseInt(self.myWindow.getComputedStyle(rela).marginLeft,10) + offsetleft;
+           let position = x - marleft >= 80 ? 80 : x-marleft;
+           self.percentageOfVoice = Number(position/80 * 100).toFixed()+'%';
+           if(position<0){
+             self.percentageOfVoice = 0;
+             position = 0;
+           }
+           vlnow.style.width = self.percentageOfVoice;
+           media.volume = Number(position/80).toFixed(2);
+         },
+         handleTickOfVoice(e){
+           this.updateVoiceProgress(e.pageX);
+         },
+         closeVoice(e){
+           this.isForbidden = !this.isForbidden;
+           document.getElementById('audio').muted = !document.getElementById('audio').muted;
+           //停止事件冒泡 否则dot元素将会回到初始值 即声音控制条降为0px
+           e.stopPropagation();
          }
        },
        created() {
          let self=this;
-         let a = self.$refs.k;
+         let a = document.getElementById('k'),
+           body = document.documentElement || document.body;
           // 将setTimeout改成setInterval 有标题滚动效果
           // let token=setTimeout(function () {
           //   document.title = self.$store.getters.NowPlay.song + "-" + self.$store.getters.NowPlay.singer + "..." + "正在播放" + " ";
           //   var text = document.title;
           //   document.title = text.substring(1,text.length) + text.substring(0,1);
           // },700);
-          self.myWindow.addEventListener('resize',function (e) {
-            self.max = a.clientWidth;
+          body.addEventListener('mousemove',function (e) {
+            if(self.progressInit){
+              self.updateProgress(e.pageX);
+            }
+            if(self.progressVoiceInit){
+              self.updateVoiceProgress(e.pageX);
+            }
           });
+          body.addEventListener('mouseup',function (e) {
+            if(self.progressInit){
+              self.progressInit = false;
+              self.updateProgress(e.pageX);
+            }
+            if(self.progressVoiceInit){
+              self.progressVoiceInit = false;
+              self.updateVoiceProgress(e.pageX);
+            }
+          })
         },
         //设置导航守卫
         beforeRouteEnter(to, from, next) {

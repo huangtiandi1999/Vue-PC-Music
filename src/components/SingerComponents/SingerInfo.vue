@@ -34,13 +34,14 @@
       props:['Info'],
       data(){
         return {
-          staticTab:[{name:"单曲",nums:this.Info.music_inf.songName.length},{name:"专辑",nums:this.Info.music_inf.Albums.length}],
+          staticTab:[{name:"单曲",nums:this.Info.music_inf.songName.length}],
           follow:false,
         }
       },
       computed:{
         fans(){
-          return this.Info.singer_inf.fans;
+          let fans = this.Info.singer_inf.fans;
+          return fans > 10000 ? Number(fans/10000).toFixed(1)+'万' : fans;
         }
       },
       methods:{
