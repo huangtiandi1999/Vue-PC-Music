@@ -54,11 +54,6 @@
   transition-property: opacity;
   transition-duration: .3s;
 }
-.main{
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-}
 .singer_filter_wrap{
   padding: 34px 0 17px 40px;
   margin: 30px 0 20px;
@@ -153,9 +148,6 @@
 
 /* 自适应 */
 @media (max-width: 1240px) {
-  .main{
-    min-width: 900px;
-    margin: 0 50px;
-  }
+  
 }
 

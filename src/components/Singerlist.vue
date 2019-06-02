@@ -20,12 +20,12 @@
         <div class="singer_filter_wrap">
           <!-- 地区 -->
           <div class="singer_filter_tag area_tag">
-            <a v-for="(area,index) of filterTagsOfArea" href="javascript:;"
+            <a v-for="(area,index) of filterTagsOfArea" href="javascript:;" @click="FilterByArea(area,index)"
                class="singer_tag_item" :class="{'tag_item_all':index==0,'tag_item_selected':index==currentTagOfArea}">{{area}}</a>
           </div>
           <!-- 性别 -->
           <div class="singer_filter_tag area_sex">
-            <a v-for="(sex,index) of filterTagsOfSex" href="javascript:;"
+            <a v-for="(sex,index) of filterTagsOfSex" href="javascript:;" @click="FilterBySex(sex,index)"
                class="singer_tag_item" :class="{'tag_item_all':index==0,'tag_item_selected':index==currentTagOfSex}">{{sex}}</a>
           </div>
         </div>
@@ -89,6 +89,12 @@
         }
       },
       methods:{
+        FilterByArea(area,index){
+          this.currentTagOfArea = index;
+        },
+        FilterBySex(sex,index){
+          this.currentTagOfSex = index;
+        },
         singerIndex(singerName){
           this.$router.push({name:"Singer",params:{sn:singerName}});
         },

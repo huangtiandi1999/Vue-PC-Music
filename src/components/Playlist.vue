@@ -1,6 +1,21 @@
 <template>
-    <div v-if="PlayLists">
-      <h1 style="color: #999;font-size: 26px;text-align: center;margin-top: 50px">歌单数据已经获取，请等待后续完善</h1>
+    <div class="main" v-if="PlayLists">
+      <!-- 标签筛选 -->
+      <div class="mod_filter_wrap">
+        <div class="mod_filter_tag_item">
+          <h3 class="filter_tag_name">语种</h3>
+          <i></i>
+          <ul class="filter_box">
+            <li class="filter_box_item" v-for="index of 6">
+              <a href="javascript:;" class="filter_tag_link">韩语</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- 展示所有歌单 -->
+      <div>
+
+      </div>
     </div>
 </template>
 
@@ -15,7 +30,8 @@
       },
       created() {
         let self = this;
-        getDiscList().then(res=>{
+        // 页面加载时  默认传递categoryid为 10000000 表示热门歌单 没有在页面中展示热门歌单的过滤选项 sortid为3表示最热歌单
+        getDiscList(10000000,3).then(res=>{
           let lists = res.data.list;
           self.PlayLists = lists;
           console.log(res.data.list.length);
@@ -24,6 +40,6 @@
     }
 </script>
 
-<style scoped>
-
+<style>
+  @import '../assets/css/Playlist.css';
 </style>

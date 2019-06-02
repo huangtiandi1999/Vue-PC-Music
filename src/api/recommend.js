@@ -1,19 +1,20 @@
 import axios from 'axios'
 
-// 获取qq音乐所有歌单
-export function getDiscList() {
+// 按照分类获取歌单
+export function getDiscList(categoryid,sortid) {
   const url = '/api/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg'
   const data = Object.assign({},{
     platform: 'yqq',
     hostUin: 0,
+    g_tk: 1055628348,
     sin: 0,
-    ein: 29,
-    sortId: 5,
+    ein: 19,
+    loginUin: 1491433427,
+    sortId: sortid,
     needNewCode: 0,
-    categoryId: 10000000,
+    categoryId: categoryid,
     rnd: Math.random(),
     format: 'json'
-
   })
 
   return axios.get(url, {
@@ -51,7 +52,7 @@ export function getMusicJson(songmid) {
     outCharset:'utf-8',
     notice:0,
     platform: 'yqq.json',
-    data: {"req":{"module":"CDN.SrfCdnDispatchServer","method":"GetCdnDispatch","param":{"guid":"5611510712","calltype":0,"userip":""}},"req_0":{"module":"vkey.GetVkeyServer","method":"CgiGetVkey","param":{"guid":"5611510712","songmid":[songmid],"songtype":[0],"uin":"1491433427","loginflag":1,"platform":"20"}},"comm":{"uin":1491433427,"format":"json","ct":24,"cv":0}}
+    data: {"req":{"module":"CDN.SrfCdnDispatchServer","method":"GetCdnDispatch","param":{"guid":"5611510712","calltype":0,"userip":""}},"req_0":{"module":"vkey.GetVkeyServer","method":"CgiGetVkey","param":{"guid":"5611510712","songmid":[songmid],"songtype":[0],"uin":"2653696782","loginflag":1,"platform":"20"}},"comm":{"uin":2653696782,"format":"json","ct":24,"cv":0}}
   });
 
   return axios.get(url,{params:data})
@@ -69,6 +70,51 @@ export function getSingerDetailsInfo(singermid) {
   const data = Object.assign({},{
     data:{"comm":{"ct":24,"cv":0},"singer":{"method":"get_singer_detail_info","param":{"sort":5,"singermid":singermid,"sin":0,"num":10},"module":"music.web_singer_info_svr"}}
   })
+
+  return axios.get(url,{params:data}).then(res=>{
+    return Promise.resolve(res);
+  })
+}
+
+// 获取歌单中的数据
+export function getSongListInfo(dissid) {
+  const url = '/api/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg'
+
+  const data = Object.assign({},{
+    platform:'yqq.json',
+    inCharset:'utf8',
+    outCharset: 'utf-8',
+    disstid:dissid,
+    type:1,
+    json:1,
+    hostUin:0,
+    format:'json',
+  });
+
+  return axios.get(url,{
+    params:data,
+  }).then(res=>{
+    return Promise.resolve(res);
+  })
+}
+
+
+//试着获取单独的vkey
+export function getVkey() {
+  const url = '/try/base/fcgi-bin/fcg_music_express_mobile3.fcg';
+
+  const data = Object.assign({},{
+    songmid:"003QMwjX2jFf8F",
+    filename:"C400003QMwjX2jFf8F.m4a",
+    guid: 5611510712,
+    platform: 'yqq',
+    loginUin: 0,
+    hostUin: 0,
+    needNewCode: 0,
+    cid: 205361747,
+    format:'json',
+    uin:0
+  });
 
   return axios.get(url,{params:data}).then(res=>{
     return Promise.resolve(res);

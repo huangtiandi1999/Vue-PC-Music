@@ -5,7 +5,7 @@
           <li class="hot_music_slide_item" v-for="pop in RecommendList.slice(0,5)">
             <div class="hot_music_item_box">
               <div class="hot_music_item_top">
-                <a href="javascript:;">
+                <a href="javascript:;" @click="playThisLists(pop.dissid)">
                   <img :src=pop.imgPath class="hot_music_item_img music_play_img"/>
                   <i class="covers"></i>
                   <i class="music_play_btn hot_play_btn"></i>
@@ -40,7 +40,9 @@
 </template>
 
 <script>
-    export default {
+  import {getSongListInfo,getMusicJson} from "../../../../api/recommend";
+
+  export default {
       name: "Reone",
       computed:{
         RecommendList(){
@@ -52,8 +54,30 @@
         return{
         }
       },
-      mounted() {
+      methods:{
+        playThisLists(dissid){
+          let self = this;
+          // 此处我将通过 dissid从qq音乐接口获取到该id对应歌单的所有数据 并且拼接歌单中所有歌曲的播放源
+          // 需要构造的信息info的数组  info的数据结构需要 ablum,name,photo,singer,songmid,url这些属性
+          getSongListInfo(dissid).then(data=>{
+            let songlist = data.data.cdlist[0].songlist;
 
+            let a = songlist.map(song=>{
+              const img = `https://y.gtimg.cn/music/photo_new/T002R300x300M000${song.albummid}.jpg?max_age=2592000`;
+              let b = {
+                album:song.albumname,
+                name:song.songname,
+                singer:song.singer[0].name,
+                songmid:song.songmid,
+                photo:img,
+                url:''
+              }
+              return b;
+              })
+            self.$store.dispatch('EvalSongListForNew',a);
+            this.$router.push({name:'player'});
+            });
+        }
       }
     }
 </script>

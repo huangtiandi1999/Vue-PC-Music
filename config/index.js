@@ -24,9 +24,10 @@ module.exports = {
         pathRewrite:{
           '^/api' : ''
         },
-        headers: {
-          referer: 'https://c.y.qq.com'
-        }
+        bypass: function (req, res, proxyOptions) {
+          // 关键的一步  设置代理referer 该值一定要与qq音乐请求数据页url一致
+          req.headers.referer = 'https://y.qq.com/portal/playlist.html';
+        },
       },
       '/a':{
         target:'https://u.y.qq.com/',
@@ -50,6 +51,18 @@ module.exports = {
         changeOrigin:true,
         pathRewrite:{
           '^/c':''
+        }
+      },
+      '/try':{
+        target:'https://c.y.qq.com/',
+        secure:false,
+        changeOrigin:true,
+        bypass:function (req,res,proxyOptions) {
+          req.headers.referer = 'https://c.y.qq.com';
+          req.header.host='c.y.qq.com'
+        },
+        pathRewrite:{
+          '^/try':''
         }
       }
     },

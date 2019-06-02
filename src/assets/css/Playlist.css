@@ -1,0 +1,42 @@
+.mod_filter_wrap{
+  padding: 60px 0 32px;
+  position: relative;
+  margin-right: -24px;
+  /* 清除浮动 */
+  overflow: hidden;
+}
+.mod_filter_tag_item{
+  width: 160px;
+  line-height: 26px;
+  margin-right: 22px;
+  position: relative;
+  float: left;
+}
+.filter_tag_name{
+  margin: -6px 0 8px;
+  padding-left: 8px;
+}
+.filter_box_item{
+  float: left;
+  margin-bottom: 4px;
+  width: 76px;
+}
+
+
+
+
+/* 自适应 */
+@media (max-width: 1240px) {
+  .mod_filter_tag_item{
+    width: 20%;
+    margin-right: 0;
+  }
+  .filter_box{
+    overflow: hidden;
+    margin-right: 22px;
+  }
+  .filter_box_item{
+    width: 50%;
+
+  }
+}

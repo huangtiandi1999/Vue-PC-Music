@@ -105,6 +105,7 @@
               const url = domain + query;
               // 将地址存入info
               info.url = url;
+              console.log(info);
               this.$store.dispatch('SetNowPlay',{song,singer});
               // 将当前单击歌曲加入播放队列
               this.$store.dispatch('AddSongToList',info);

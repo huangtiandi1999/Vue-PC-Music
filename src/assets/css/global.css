@@ -222,9 +222,19 @@ img{
 }
 
 
+.main{
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 @media (max-width: 1240px) {
   .index_inner{
     margin: 0 50px;
     min-width: 900px;
+  }
+  .main{
+    min-width: 900px;
+    margin: 0 50px;
   }
 }

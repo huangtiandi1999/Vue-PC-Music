@@ -17,7 +17,13 @@
         <div class="mod_player_body">
           <!-- 默认模式 使用左边2个右边一个div的布局方式 -->
           <div class="mod_default_body">
-            <ToolBar></ToolBar>
+            <div class="mod_player_toolbar">
+              <a href="javascript:;" class="mod_toolbar_btn p_btn"><i class="music_icon play_like_icon operate_icon"></i>收藏</a>
+              <a href="javascript:;" class="mod_toolbar_btn p_btn"><i class="music_icon play_add_icon operate_icon"></i>添加到</a>
+              <a href="javascript:;" class="mod_toolbar_btn p_btn"><i class="music_icon play_download_icon operate_icon"></i>下载</a>
+              <a href="javascript:;" class="mod_toolbar_btn p_btn" @click="handleDeleteSong"><i class="music_icon play_delete_icon operate_icon"></i>删除</a>
+              <a href="javascript:;" class="mod_toolbar_btn p_btn" @click="handleClearSong"><i class="music_icon play_clear_icon operate_icon"></i>清空列表</a>
+            </div>
             <div class="mod_default_view">
               <div class="mod_songlist_area">
                 <!-- 顶端分割线 -->
@@ -33,6 +39,10 @@
                 <ul>
                   <li v-for="(item,index) of songlist">
                     <div class="mod_songlist_item">
+                      <!-- 删除edit -->
+                      <div class="mod_songlist_edit music_icon" :class="{'checked_mod_songlist_edit':inArr(index)}">
+                        <input class="edit_input" :value="index" v-model="deletesArr" type="checkbox"/>
+                      </div>
                       <div class="mod_songlist_index">{{index+1}}</div>
                       <div class="mod_songlist_songname">
                         <span :title="item.name">{{item.name}}</span>
@@ -118,12 +128,10 @@
 </template>
 
 <script>
-  import ToolBar from './PlayerComponents/PlayToolbar'
-    export default {
+  import {getMusicJson} from "../api/recommend";
+
+  export default {
        name: "player",
-       components:{
-         ToolBar
-       },
        data() {
          return {
            playurl:'',
@@ -141,6 +149,7 @@
            volume:0.5,
            isForbidden:false,
            progressVoiceInit:false,
+           deletesArr:[],
          }
        },
        computed:{
@@ -158,35 +167,78 @@
          },
          AllT(){
            return this.formatTime(this.alltime);
+         },
+         inArr(){
+           let self = this;
+           // 使用闭包实现 计算属性的参数传递
+           return function (index) {
+             return self.deletesArr.indexOf(index)!=-1;
+           }
          }
        },
        methods:{
+         // 删除歌曲
+         handleDeleteSong(){
+           if(this.deletesArr.length==0){
+             return this.$message({
+               message:'请选择要删除的歌曲',
+               type:'warning'
+             })
+           }
+           let self = this;
+           let filterArr = this.$store.getters.ListSong.filter((item,index)=>{
+             return self.deletesArr.indexOf(index) == -1;
+           });
+           self.$store.dispatch('EvalSongListForNew',filterArr);
+           self.deletesArr=[];
+         },
+         //清空列表
+         handleClearSong(){
+           let self = this;
+           this.$MessageBox.confirm('确定要清空列表?','QQ音乐',{
+             confirmButtonText: '确定',
+             cancelButtonText: '取消',
+             type:'warning'
+           }).then(()=>{
+             self.$store.dispatch('EvalSongListForNew',[]);
+           })
+         },
          play(item,index){
-           let a = document.getElementById('audio');
-           if(item.singer == "周杰伦"){
+           let a = document.getElementById('audio'),self = this;
+           if(item.singer == "周杰伦") {
              this.$message({
-               type:'info',
-               message:'很遗憾！周董的歌无法获取到播放源地址，换一首试试 ┑(￣Д ￣)┍',
-               duration:4000
+               type: 'info',
+               message: '很遗憾！周董的歌无法获取到播放源地址，换一首试试 ┑(￣Д ￣)┍',
+               duration: 4000
              });
+             return;
+           }else if(item.url==''){
+             // 这部分代码是为了那些从歌单直接跳转过来而准备的
+             // 我仔细观察了qq音乐的请求方式 它也是点一个请求一个vkey这种
+             getMusicJson(item.songmid).then(res=>{
+               const domain = res.data.req.data.freeflowsip[0];
+               const query = res.data.req_0.data.midurlinfo[0].purl;
+               const url = domain + query;
+               self.$store.getters.ListSong[index].url = item.url = url;
+               self.playurl = item.url;
+             })
+           }
+           this.playurl = item.url;
+           this.playsong = item;
+           if(a.paused){
+             // 如果当前歌曲处于暂停 并且点击其他歌曲播放按钮 那么将当前单击播放按钮改变样式并且播放
+             this.isplaying=true;
+             this.playsongindex = index;
+             a.play();
+           }else if(!a.paused && this.playsongindex!=index){
+             // 如果歌曲处于播放状态 单击其他歌曲 那么同上
+             this.isplaying = true;
+             this.playsongindex = index;
+             a.play();
            }else{
-             this.playurl = item.url;
-             this.playsong = item;
-             if(a.paused){
-               // 如果当前歌曲处于暂停 并且点击其他歌曲播放按钮 那么将当前单击播放按钮改变样式并且播放
-               this.isplaying=true;
-               this.playsongindex = index;
-               a.play();
-             }else if(!a.paused && this.playsongindex!=index){
-               // 如果歌曲处于播放状态 单击其他歌曲 那么同上
-               this.isplaying = true;
-               this.playsongindex = index;
-               a.play();
-             }else{
-               // 否则停止播放
-               this.isplaying = false;
-               a.pause();
-             }
+             // 否则停止播放
+             this.isplaying = false;
+             a.pause();
            }
          },
          controlplay(){

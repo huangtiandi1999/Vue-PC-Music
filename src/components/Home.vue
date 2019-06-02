@@ -10,7 +10,9 @@
 <script>
   import HotMusicSheet from './HomeInnerComponents/HotMusicSheet'
   import StartingMusic from './HomeInnerComponents/StartingMusic'
-    export default {
+  import {getVkey} from "../api/recommend";
+
+  export default {
       name: "Home",
       components:{
         HotMusicSheet,

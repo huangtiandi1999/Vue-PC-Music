@@ -6,7 +6,7 @@ import router from './router'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/global.css'
 import axios from 'axios'
-import {Carousel,CarouselItem,Dialog,Button,Input,Loading,Message} from "element-ui";
+import {Carousel,CarouselItem,Dialog,Button,Input,Loading,Message,MessageBox} from "element-ui";
 import Vuex from 'vuex'
 
 Vue.config.productionTip = false
@@ -19,6 +19,7 @@ Vue.use(CarouselItem);
 Vue.use(Vuex);
 
 Vue.prototype.$message = Message;
+Vue.prototype.$MessageBox = MessageBox;
 Vue.prototype.myWindow = window;
 /* eslint-disable no-new */
 var songList={}
@@ -92,6 +93,10 @@ axios.get("../static/data.json")
       },
       AddSong(state,songinfo){
         state.playListSong.push(songinfo);
+      },
+      // 直接将歌单中所有的歌曲赋值
+      EvalSongList(state,lists){
+        state.playListSong = lists;
       }
     }
     const actions={
@@ -115,6 +120,9 @@ axios.get("../static/data.json")
       },
       AddSongToList(context,songinfo){
         context.commit('AddSong',songinfo);
+      },
+      EvalSongListForNew(context,lists){
+        context.commit('EvalSongList',lists);
       }
     }
     const store=new Vuex.Store({
