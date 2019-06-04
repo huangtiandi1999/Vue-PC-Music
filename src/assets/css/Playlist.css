@@ -15,12 +15,157 @@
 .filter_tag_name{
   margin: -6px 0 8px;
   padding-left: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #999;
 }
 .filter_box_item{
   float: left;
   margin-bottom: 4px;
   width: 76px;
 }
+.filter_tag_link{
+  float: left;
+  padding: 0 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 68px;
+}
+
+
+/* 歌单展示区域 */
+.mod_all_lists{
+  position: relative;
+  margin-bottom: 30px;
+}
+.mod_all_head{
+  height: 60px;
+  overflow: hidden;
+}
+.mod_all_title{
+  float: left;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 58px;
+}
+.mod_all_switch{
+  position: absolute;
+  top: 7px;
+  right: 0;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 2px;
+  font-size: 0;
+}
+.switch_item{
+  display: inline-block;
+  padding: 0 16px;
+  height: 38px;
+  position: relative;
+  font-size: 14px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #c9c9c9;
+}
+.switch_item__selected:hover{
+  color: #fff;
+}
+.switch_item__left{
+  right: -1px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.switch_item__right{
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.switch_item__selected{
+  background-color: #31c27c;
+  color: #fff;
+  z-index: 2;
+  border-color: #31c27c;
+}
+.mod_lists_ul{
+  margin-right: -20px;
+}
+.mod_lists_ul_li{
+  display: inline-block;
+  width: 20%;
+  padding-bottom: 44px;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-size: 14px;
+  vertical-align: top;
+}
+.mod_lists_li_box{
+  margin-right: 20px;
+  position: relative;
+}
+.mod_lists_li_top{
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding-top: 100%;
+  margin-bottom: 15px;
+}
+.mod_lists_li_img{
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.mod_lists_scale{
+  transform: scale(1) translateZ(0);
+  transition: transform .75s;
+}
+.mod_lists_li_top:hover .mod_lists_scale{
+  transform: scale(1.07) translateZ(0);
+  transition: transform .75s cubic-bezier(0,1,.75,1);
+}
+.mod_lists_li_top:hover i{
+  opacity: 1;
+  transform: scale(1) translateZ(0);
+  transition-property: opacity,transform;
+  transition-duration: .5s;
+  cursor: pointer
+}
+.mod_lists_title{
+  overflow: hidden;
+}
+.mod_lists_text{
+  float: left;
+  max-width: 100%;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 44px;
+  line-height: 22px;
+}
+.mod_lists_author,.mod_lists_author a,.mod_lists_num{
+  color: #999;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 22px;
+}
+.mod_lists_author a:hover{
+  color: #31c27c;
+}
+.filter_tag_selected{
+  background-color: #31c27c;
+  color: #fff;
+}
+.filter_tag_selected:hover{
+  color: #fff;
+}
+
+
+
+
 
 
 

@@ -40,7 +40,8 @@
 </template>
 
 <script>
-  import {getSongListInfo,getMusicJson} from "../../../../api/recommend";
+  import {getSongListInfo} from "../../../../api/recommend";
+  import {getRightStructure} from "../../../../api/methods";
 
   export default {
       name: "Reone",
@@ -61,19 +62,7 @@
           // 需要构造的信息info的数组  info的数据结构需要 ablum,name,photo,singer,songmid,url这些属性
           getSongListInfo(dissid).then(data=>{
             let songlist = data.data.cdlist[0].songlist;
-
-            let a = songlist.map(song=>{
-              const img = `https://y.gtimg.cn/music/photo_new/T002R300x300M000${song.albummid}.jpg?max_age=2592000`;
-              let b = {
-                album:song.albumname,
-                name:song.songname,
-                singer:song.singer[0].name,
-                songmid:song.songmid,
-                photo:img,
-                url:''
-              }
-              return b;
-              })
+            let a = getRightStructure(songlist);
             self.$store.dispatch('EvalSongListForNew',a);
             this.$router.push({name:'player'});
             });

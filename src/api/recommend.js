@@ -26,6 +26,28 @@ export function getDiscList(categoryid,sortid) {
   })
 }
 
+
+//获取歌单分类配置信息
+export function getListCategory() {
+  const url = '/api/splcloud/fcgi-bin/fcg_get_diss_tag_conf.fcg';
+  const data = Object.assign({},{
+    g_tk: 1055628348,
+    loginUin: 1491433427,
+    hostUin: 0,
+    format: 'json',
+    inCharset: 'utf8',
+    outCharset:'utf-8',
+    notice: 0,
+    platform: 'yqq.json',
+    needNewCode: 0
+  });
+
+  return axios.get(url,{params:data}).then(res=>{
+    return Promise.resolve(res);
+  })
+}
+
+
 // 获取qq音乐所有歌手
 export function getSingerList() {
   const url = '/a/cgi-bin/musicu.fcg';
